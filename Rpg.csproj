@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rpg</RootNamespace>
     <AssemblyName>Rpg</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,6 +46,9 @@
   <ItemGroup>
     <Compile Include="Arbre.cs" />
     <Compile Include="Controller.cs" />
+    <Compile Include="Equipement.cs" />
+    <Compile Include="InventaireControlleur.cs" />
+    <Compile Include="InventaireView.cs" />
     <Compile Include="Pnj.cs" />
     <Compile Include="Eau.cs" />
     <Compile Include="MaisonView.cs" />

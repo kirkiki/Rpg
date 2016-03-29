@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace Rpg
 {
     enum EDirection
@@ -8,6 +10,7 @@ namespace Rpg
     class Joueur : Personnage
     {
 
+
         Position position = new Position(3,8);
         private string embleme = "X";
         private int vie = 100;
@@ -16,6 +19,15 @@ namespace Rpg
         private bool canSwim = false;
         private EDirection direction;
         private bool isDead = false;
+        private int attaque = 1;
+        private int defense = 0;
+        private int lv = 1;
+        private string name = "Bonjour";
+        private List<int> stuff = new List<int>();
+        private List<int> bag = new List<int>();
+
+        
+        
 
         public string Embleme
         {
@@ -23,6 +35,48 @@ namespace Rpg
             {
                 return embleme;
             }
+        }
+
+        public List<int> Bag
+        {
+            get { return bag; }
+            set { bag = value; }
+        } 
+
+        public List<int> Stuff
+        {
+            get { return stuff; }
+            set { stuff = value; }
+        }
+
+        public int Lv
+        {
+            get { return lv; }
+            set { lv = value; }
+        }
+
+        public int Vie
+        {
+            get { return vie; }
+            set { vie = value; }
+        }
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        public int Attaque
+        {
+            get { return attaque; }
+            set { attaque = value; }
+        }
+
+        public int Defense
+        {
+            get { return defense; }
+            set { defense = value; }
         }
 
         public Position Position
@@ -95,7 +149,8 @@ namespace Rpg
 
         public Joueur(String p_nom)
         {
-            this.nom = p_nom;
+            this.name = p_nom;
+            stuff.Add(1);
         }
 
         public Position nextPosition()

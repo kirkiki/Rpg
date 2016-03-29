@@ -7,11 +7,13 @@ namespace Rpg
 
         public Map map = new Map();
         MaisonController msc;
+        InventaireControlleur ivc;
 
         public MapControler()
         {
             mv = new MapView(this);
             msc = new MaisonController(this);
+            ivc = new InventaireControlleur(this);
         }
         public void Start()
         {
@@ -141,6 +143,9 @@ namespace Rpg
                 case ConsoleKey.Enter:
                     talk();
                     //map.Joueur.Position = new Position(9, 9);
+                    break;
+                case ConsoleKey.I:
+                    ivc.Run(map.Joueur);
                     break;
                 default:
                     break;
