@@ -8,7 +8,7 @@ namespace Rpg
     class Joueur : Personnage
     {
 
-        Position _position = new Position(3, 8);
+        Position _position = new Position(1, 1);
         private string _embleme = "X";
         private int _vie = 100;
         private int _velociteX = 0;

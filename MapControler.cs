@@ -53,7 +53,7 @@ namespace Rpg
                 Map.Joueur.Position = nextPos;
             }
 
-            else if (Map.Plan[nextPos.Y, nextPos.X] == Map.Maison )
+            else if (Map.Plan[nextPos.Y, nextPos.X] == Map.Maison && Map.Joueur.Direction==EDirection.Haut)
             {
                 msc.IsEnter = true;
                 msc.Entrer(Map.Joueur);

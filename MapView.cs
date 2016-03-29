@@ -27,7 +27,7 @@ namespace Rpg
                     }
                     _mpc.DisplayEmbleme(_map.Sol, j, i);
                     if (_mpc.DisplayEmbleme(_map.Pnj, j, i))
-                        _map.Npc.Position = new Position(3, 7);
+                        _map.Npc.Position = new Position(10,13);
                     _mpc.DisplayEmbleme(_map.Eau, j, i);
                     _mpc.DisplayEmbleme(_map.Arbre, j, i);
                     _mpc.DisplayEmbleme(_map.Maison, j, i);
