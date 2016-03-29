@@ -1,0 +1,8 @@
+JEU: TURFU
+
+Pour bouger: utiliser les fleches.
+Pour parler aux PNJ, utiliser entrer en face de lui. 
+
+Les '-' sont le sol, '~' sont la mer, les 'O' sont les murs. 
+
+Bon jeu
