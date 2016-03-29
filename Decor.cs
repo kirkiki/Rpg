@@ -10,12 +10,6 @@ namespace Rpg
     {
         protected Position position;
 
-        public Position Position
-        {
-            get
-            {
-                return position;
-            }
-        }
+        public Position Position { get { return position; } }
     }
 }

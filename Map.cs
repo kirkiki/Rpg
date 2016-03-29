@@ -3,70 +3,92 @@
     class Map
     {
 
-        private static string sol = "-";
-        private static string arbre = "O";
-        private static string maison = "A";
-        private static string eau = "~";
-        private static string pnj = "L";
+        private static string _sol = "-";
+        private static string _arbre = "O";
+        private static string _maison = "A";
+        private static string _eau = "~";
+        private static string _pnj = "L";
 
-        private static string H = maison;
-        private static string O = sol;
-        private static string I = arbre;
-        private static string E = eau;
-        private static string D = pnj;
+        private static string H = _maison;
+        private static string O = _sol;
+        private static string I = _arbre;
+        private static string E = _eau;
+        private static string D = _pnj;
 
-        private string[,] plan = new string[,]
+        private string[,] _plan = new string[,]
         {
-            {I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I},
-            {I,I,O,I,I,I,O,O,O,O,O,I,E,E,E,E,E,E,E,I},
-            {I,O,O,I,O,O,O,I,I,I,O,I,E,E,E,E,E,E,E,I},
-            {I,I,I,O,O,I,I,I,I,I,O,I,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,I,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,I,O,O,O,O,O,O,O,I},
-            {I,O,O,D,O,O,H,O,O,O,O,I,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,I,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,I,O,O,O,O,O,O,O,I}
+            {I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I},
+            {I,I,O,I,I,I,O,O,O,O,O,I,E,E,E,E,E,E,E,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,I,O,O,O,I,I,I,O,I,E,E,E,E,E,E,E,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,I,I,O,O,I,I,I,I,I,O,I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,D,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,D,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,D,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,D,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,D,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,D,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,D,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,D,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O},
+            {I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I}
         };
 
-        Joueur joueur = new Joueur("Ronan");
-        Pnj npc = new Pnj(new Position(0,0));
+        Joueur _joueur = new Joueur("Ronan");
+        Pnj _npc = new Pnj(new Position(0,0));
 
         public string[,] Plan
         {
             get
             {
-                return plan;
+                return _plan;
             }
         }
 
-        public int getLargeur()
+        public int GetLargeur()
         {
-            return plan.GetLength(1) - 1;
+            return _plan.GetLength(1) - 1;
         }
-        public int getLongueur()
+        public int GetLongueur()
         {
-            return plan.GetLength(0) - 1;
+            return _plan.GetLength(0) - 1;
         }
         public Joueur Joueur
         {
             get
             {
-                return joueur;
+                return _joueur;
             }
         }
         public string Sol
         {
             get
             {
-                return sol;
+                return _sol;
             }
         }
         public string Arbre
         {
             get
             {
-                return arbre;
+                return _arbre;
             }
         }
 
@@ -74,7 +96,7 @@
         {
             get
             {
-                return maison;
+                return _maison;
             }
         }
 
@@ -82,7 +104,7 @@
         {
             get
             {
-                return eau;
+                return _eau;
             }
         }
 
@@ -90,25 +112,25 @@
         {
             get
             {
-                return pnj;
+                return _pnj;
             }
 
             set
             {
-                pnj = value;
+                _pnj = value;
             }
         }
 
-        internal Pnj Npc
+        public Pnj Npc
         {
             get
             {
-                return npc;
+                return _npc;
             }
 
             set
             {
-                npc = value;
+                _npc = value;
             }
         }
     }

@@ -4,33 +4,33 @@ namespace Rpg
 {
     class MapView
     {
-        MapControler mpc;
-        Map map;
+        MapControler _mpc;
+        Map _map;
 
         public MapView(MapControler mc)
         {
-            mpc = mc;
-            map = mc.map;
+            _mpc = mc;
+            _map = mc.Map;
         }
 
         public void Display()
         {
             Console.Clear();
-            for (int i = 0; i <= map.getLongueur(); i++)
+            for (int i = 0; i <= _map.GetLongueur(); i++)
             {
-                for (int j = 0; j <= map.getLargeur(); j++)
+                for (int j = 0; j <= _map.GetLargeur(); j++)
                 {
-                    if (map.Joueur.Position.X == j && map.Joueur.Position.Y == i)
+                    if (_map.Joueur.Position.X == j && _map.Joueur.Position.Y == i)
                     {
-                        Console.Write(map.Joueur.Embleme + " ");
+                        Console.Write(_map.Joueur.Embleme + " ");
                         j++;
                     }
-                    mpc.displayEmbleme(map.Sol, j, i);
-                    if (mpc.displayEmbleme(map.Pnj, j, i))
-                        map.Npc.Position = new Position(j, i);
-                    mpc.displayEmbleme(map.Eau, j, i);
-                    mpc.displayEmbleme(map.Arbre, j, i);
-                    mpc.displayEmbleme(map.Maison, j, i);
+                    _mpc.DisplayEmbleme(_map.Sol, j, i);
+                    if (_mpc.DisplayEmbleme(_map.Pnj, j, i))
+                        _map.Npc.Position = new Position(3, 7);
+                    _mpc.DisplayEmbleme(_map.Eau, j, i);
+                    _mpc.DisplayEmbleme(_map.Arbre, j, i);
+                    _mpc.DisplayEmbleme(_map.Maison, j, i);
                 }
                 Console.WriteLine();
             }
@@ -38,7 +38,7 @@ namespace Rpg
 
         public void GetInfoTouche(ConsoleKeyInfo cki)
         {
-            mpc.input(cki.Key);
+            _mpc.Input(cki.Key);
         }
     }
 

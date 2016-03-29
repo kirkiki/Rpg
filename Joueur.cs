@@ -3,116 +3,58 @@ namespace Rpg
 {
     enum EDirection
     {
-        HAUT,BAS,GAUCHE,DROITE
+        Haut, Bas, Gauche, Droite
     }
     class Joueur : Personnage
     {
 
-        Position position = new Position(3,8);
-        private string embleme = "X";
-        private int vie = 100;
-        private int velociteX = 0;
-        private int velociteY = 0;
-        private bool canSwim = false;
-        private EDirection direction;
-        private bool isDead = false;
+        Position _position = new Position(3, 8);
+        private string _embleme = "X";
+        private int _vie = 100;
+        private int _velociteX = 0;
+        private int _velociteY = 0;
+        private bool _canSwim = false;
+        private EDirection _direction;
+        private bool _isDead = false;
 
-        public string Embleme
+        public string Embleme { get { return _embleme; } }
+
+        public Position Position { get { return _position; } set { _position = value; } }
+
+        public int VelociteX { get { return _velociteX; } }
+
+        public int VelociteY { get { return _velociteY; } }
+
+        public bool CanSwim { get { return _canSwim; } set { _canSwim = value; } }
+
+        public EDirection Direction { get { return _direction; } set { _direction = value; } }
+
+        public bool IsDead{get{return _isDead;}set{_isDead = value;}}
+
+        public Joueur(String pNom)
         {
-            get
-            {
-                return embleme;
-            }
+            this.Nom = pNom;
         }
 
-        public Position Position
-        {
-            get
-            {
-                return position;
-            }
-
-            set
-            {
-                position = value;
-            }
-        }
-
-        public int VelociteX
-        {
-            get
-            {
-                return velociteX;
-            }
-        }
-
-        public int VelociteY
-        {
-            get
-            {
-                return velociteY;
-            }
-        }
-
-        public bool CanSwim
-        {
-            get
-            {
-                return canSwim;
-            }
-
-            set
-            {
-                canSwim = value;
-            }
-        }
-
-        public EDirection Direction
-        {
-            get
-            {
-                return direction;
-            }
-
-            set
-            {
-                direction = value;
-            }
-        }
-
-        public bool IsDead
-        {
-            get
-            {
-                return isDead;
-            }
-
-            set
-            {
-                isDead = value;
-            }
-        }
-
-        public Joueur(String p_nom)
-        {
-            this.nom = p_nom;
-        }
-
-        public Position nextPosition()
+        public Position NextPosition()
         {
             return new Position(Position.X + VelociteX, Position.Y + VelociteY);
         }
 
-        public override void Bouger(int p_velociteX, int p_velociteY)
+        public override void Bouger(int pVelociteX, int pVelociteY)
         {
-            velociteX = p_velociteX;
-            velociteY = p_velociteY;
+            _velociteX = pVelociteX;
+            _velociteY = pVelociteY;
         }
-        public override void attaquer()
+
+        public override void Attaquer()
         {
+            throw new NotImplementedException();
         }
-        public override void prendreDesDegats()
+
+        public override void PrendreDesDegats()
         {
+            throw new NotImplementedException();
         }
     }
 }

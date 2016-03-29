@@ -4,21 +4,21 @@ namespace Rpg
 {
     class HomeControler
     {
-        public MapControler mp { get; private set; }
+        public MapControler Mp { get; private set; }
 
         public HomeControler()
         {
-            mp = new MapControler();
+            Mp = new MapControler();
         }
 
         public void Start()
         {
-             mp.Start();
+             Mp.Start();
         }
 
         public bool Play()
         {
-            return mp.Play();
+            return Mp.Play();
         }
 
         public void Display()

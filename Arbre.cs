@@ -8,16 +8,16 @@ namespace Rpg
 {
     class Arbre : Decor
     {
-        private string emblemeArbre = "+";
-        public Arbre(Position p_position)
+        private string _emblemeArbre = "+";
+        public Arbre(Position pPosition)
         {
-            position = p_position;
+            position = pPosition;
         }
         public string EmblemeArbre
         {
             get
             {
-                return emblemeArbre;
+                return _emblemeArbre;
             }
         }
     }

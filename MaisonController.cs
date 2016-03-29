@@ -9,61 +9,61 @@ namespace Rpg
     class MaisonController : Controller
 
     {
-        public MaisonView mav { get; private set; }
-        public Maison maison = new Maison();
-        private bool isEnter = false;
-        private MapControler mapControler;
+        public MaisonView Mav { get; private set; }
+        public Maison Maison = new Maison();
+        private bool _isEnter = false;
+        private MapControler _mapControler;
 
 
         public MaisonController(MapControler pMapControler)
         {
-            mav = new MaisonView(maison);
-            mapControler = pMapControler;
+            Mav = new MaisonView(Maison);
+            _mapControler = pMapControler;
         }
 
         public bool IsEnter
         {
             get
             {
-                return isEnter;
+                return _isEnter;
             }
 
             set
             {
-                isEnter = value;
+                _isEnter = value;
             }
         }
 
         public void Entrer(Joueur pJoueur)
         {
-            maison.Joueur = pJoueur;
-            maison.Joueur.Position = new Position(3, 1);
-            mav.Display();
+            Maison.Joueur = pJoueur;
+            Maison.Joueur.Position = new Position(3, 1);
+            Mav.Display();
         }
 
         public void Move()
         {
-            Position nextPos = new Position(maison.Joueur.Position.X + maison.Joueur.VelociteX, maison.Joueur.Position.Y + maison.Joueur.VelociteY);
+            Position nextPos = new Position(Maison.Joueur.Position.X + Maison.Joueur.VelociteX, Maison.Joueur.Position.Y + Maison.Joueur.VelociteY);
 
-            if (nextPos.Y > maison.getLongueur() || nextPos.X > maison.getLargeur())
+            if (nextPos.Y > Maison.GetLongueur() || nextPos.X > Maison.GetLargeur())
             {
-                maison.Joueur.Bouger(0, 0);
+                Maison.Joueur.Bouger(0, 0);
             }
             else if (nextPos.X < 0 || nextPos.Y < 0)
             {
-                maison.Joueur.Bouger(0, 0);
+                Maison.Joueur.Bouger(0, 0);
             }
-            else if (maison.getMaisonBloc(nextPos.Y, nextPos.X) == maison.Sol)
+            else if (Maison.GetMaisonBloc(nextPos.Y, nextPos.X) == Maison.Sol)
             {
-                maison.Joueur.Position = nextPos;
+                Maison.Joueur.Position = nextPos;
             }
-            else if(maison.getMaisonBloc(nextPos.Y,nextPos.X)==maison.Porte)
+            else if(Maison.GetMaisonBloc(nextPos.Y,nextPos.X)==Maison.Porte)
             {
-                mapControler.map.Joueur.Position=new Position(6,8);
-                isEnter = false;
+                _mapControler.Map.Joueur.Position=new Position(6,8);
+                _isEnter = false;
             }
             else {
-                maison.Joueur.Bouger(0, 0);
+                Maison.Joueur.Bouger(0, 0);
             }
         }
     }

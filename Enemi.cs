@@ -4,24 +4,25 @@
 
     class Enemi:Personnage
     {
-        public Enemi(String p_nom, int p_vie)
+        public Enemi(String pNom, int pVie)
         {
-            this.nom = p_nom;
-            this.vie = p_vie;
+            this.Nom = pNom;
+            this.Vie = pVie;
         }
-        public override void attaquer()
-        {
-            throw new NotImplementedException();
-        }
-        public override void prendreDesDegats()
-        {
-            throw new NotImplementedException();
 
-        }
-        public override void Bouger(int p_positionX, int p_positionY)
+        public override void Attaquer()
         {
             throw new NotImplementedException();
         }
 
+        public override void Bouger(int pVelociteX, int pVelociteY)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void PrendreDesDegats()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -8,41 +8,41 @@ namespace Rpg
 {
     class Maison : Decor
     {
-        Joueur joueur;
-        private Position position;
-        private string emblemeMaison = "A";
-        private static string sol = "-";
-        private static string mur = "O";
-        private static string porte = "=";
-        private static string I=sol ;
-        private static string Q=mur ;
-        private static string B=porte;
-        public string Sol { get { return sol; } }
+        Joueur _joueur;
+        private Position _position;
+        private string _emblemeMaison = "A";
+        private static string _sol = "-";
+        private static string _mur = "O";
+        private static string _porte = "=";
+        private static string _=_sol ;
+        private static string _q=_mur ;
+        private static string _b=_porte;
+        public string Sol { get { return _sol; } }
 
         public Maison()
         {
             
         }
-        public Maison(Position p_position)
+        public Maison(Position pPosition)
         {
-            PositionMaison = p_position;
+            PositionMaison = pPosition;
         }
-        private string[,] maison = new string[,]
+        private string[,] _maison = new string[,]
         {
-            {Q,Q,Q,Q,Q,Q,Q},
-            {Q,I,I,I,I,I,Q},
-            {Q,I,I,I,I,I,Q},
-            {Q,I,I,I,I,I,Q},
-            {Q,I,I,I,I,I,Q},
-            {Q,I,I,I,I,I,Q},
-            {Q,Q,Q,B,Q,Q,Q}
+            {_q,_q,_q,_q,_q,_q,_q},
+            {_q,_,_,_,_,_,_q},
+            {_q,_,_,_,_,_,_q},
+            {_q,_,_,_,_,_,_q},
+            {_q,_,_,_,_,_,_q},
+            {_q,_,_,_,_,_,_q},
+            {_q,_q,_q,_b,_q,_q,_q}
         };
 
         public string EmblemeMaison
         {
             get
             {
-                return emblemeMaison;
+                return _emblemeMaison;
             }
         }
 
@@ -50,12 +50,12 @@ namespace Rpg
         {
             get
             {
-                return joueur;
+                return _joueur;
             }
 
             set
             {
-                joueur = value;
+                _joueur = value;
             }
         }
 
@@ -63,7 +63,7 @@ namespace Rpg
         {
             get
             {
-                return porte;
+                return _porte;
             }
         }
 
@@ -71,26 +71,26 @@ namespace Rpg
         {
             get
             {
-                return position;
+                return _position;
             }
 
             set
             {
-                position = value;
+                _position = value;
             }
         }
 
-        public string getMaisonBloc(int i, int j)
+        public string GetMaisonBloc(int i, int j)
         {
-            return maison[i, j];
+            return _maison[i, j];
         }
-        public int getLargeur()
+        public int GetLargeur()
         {
-            return maison.GetLength(1) - 1;
+            return _maison.GetLength(1) - 1;
         }
-        public int getLongueur()
+        public int GetLongueur()
         {
-            return maison.GetLength(0) - 1;
+            return _maison.GetLength(0) - 1;
         }
     }
 }

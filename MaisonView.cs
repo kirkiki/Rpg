@@ -8,27 +8,27 @@ namespace Rpg
 {
     class MaisonView
     {
-        HomeControler hmc;
-        Maison maison;
+        HomeControler _hmc;
+        Maison _maison;
 
         public MaisonView(Maison pMaison)
         {
-            maison = pMaison;
+            _maison = pMaison;
         }
 
         public void Display()
         {
             Console.Clear();
-            for (int i = 0; i <= maison.getLongueur(); i++)
+            for (int i = 0; i <= _maison.GetLongueur(); i++)
             {
-                for (int j = 0; j <= maison.getLargeur(); j++)
+                for (int j = 0; j <= _maison.GetLargeur(); j++)
                 {
-                    if (maison.Joueur.Position.X == j && maison.Joueur.Position.Y == i)
+                    if (_maison.Joueur.Position.X == j && _maison.Joueur.Position.Y == i)
                     {
-                        Console.Write(maison.Joueur.Embleme);
+                        Console.Write(_maison.Joueur.Embleme);
                         j++;
                     }
-                    Console.Write(maison.getMaisonBloc(i,j));
+                    Console.Write(_maison.GetMaisonBloc(i,j));
                 }
                 Console.WriteLine();
             }

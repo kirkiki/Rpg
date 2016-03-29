@@ -3,107 +3,100 @@ namespace Rpg
 {
     class MapControler
     {
-        public MapView mv { get; private set; }
+        public MapView Mv { get; private set; }
 
-        public Map map = new Map();
+        public Map Map = new Map();
         MaisonController msc;
 
         public MapControler()
         {
-            mv = new MapView(this);
+            Mv = new MapView(this);
             msc = new MaisonController(this);
         }
         public void Start()
         {
-            mv.Display();
+            Mv.Display();
         }
         public bool Play()
         {
             ConsoleKeyInfo info = Console.ReadKey();
-            mv.GetInfoTouche(info);
+            Mv.GetInfoTouche(info);
             if (msc.IsEnter)
-            {
                 msc.Move();
-            }
             else
-            {
                 Move();
-            }
             Display();
-            if (map.Joueur.IsDead){return false;}
-            else{return true;}
+
+            if (Map.Joueur.IsDead) { return false; }
+            else { return true; }
 
         }
 
         public void Move()
         {
-            Position nextPos = new Position(map.Joueur.Position.X + map.Joueur.VelociteX, map.Joueur.Position.Y + map.Joueur.VelociteY);
+            Position nextPos = new Position(Map.Joueur.Position.X + Map.Joueur.VelociteX, Map.Joueur.Position.Y + Map.Joueur.VelociteY);
 
-            if (nextPos.Y > map.getLongueur() || nextPos.X > map.getLargeur())
+            if (nextPos.Y > Map.GetLongueur() || nextPos.X > Map.GetLargeur())
             {
-                map.Joueur.Bouger(0, 0);
+                Map.Joueur.Bouger(0, 0);
             }
             else if (nextPos.X < 0 || nextPos.Y < 0)
             {
-                map.Joueur.Bouger(0, 0);
+                Map.Joueur.Bouger(0, 0);
             }
-            else if (map.Plan[nextPos.Y, nextPos.X] == map.Eau && map.Joueur.CanSwim)
+            else if (Map.Plan[nextPos.Y, nextPos.X] == Map.Eau && Map.Joueur.CanSwim)
             {
-                map.Joueur.Position = nextPos;
+                Map.Joueur.Position = nextPos;
             }
-            else if (map.Plan[nextPos.Y, nextPos.X] == map.Sol)
+            else if (Map.Plan[nextPos.Y, nextPos.X] == Map.Sol)
             {
-                map.Joueur.Position = nextPos;
+                Map.Joueur.Position = nextPos;
+            }
 
-            }
-            else if (map.Plan[nextPos.Y, nextPos.X] == map.Maison && map.Joueur.VelociteY == -1)
+            else if (Map.Plan[nextPos.Y, nextPos.X] == Map.Maison )
             {
                 msc.IsEnter = true;
-                msc.Entrer(map.Joueur);
+                msc.Entrer(Map.Joueur);
             }
             else {
-                map.Joueur.Bouger(0, 0);
+                Map.Joueur.Bouger(0, 0);
             }
         }
 
-        public bool displayEmbleme(string p_embleme, int varI, int varJ)
+        public bool DisplayEmbleme(string pEmbleme, int varI, int varJ)
         {
-            if (map.Plan[varJ, varI] == p_embleme)
-                Console.Write(map.Plan[varJ, varI] + " ");
+            if (Map.Plan[varJ, varI] == pEmbleme)
+                Console.Write(Map.Plan[varJ, varI] + " ");
             return true;
         }
 
-        public void talk()
+        public void Talk()
         {
-            if (canTalk())
+            if (CanTalk())
             {
-                map.Joueur.Position = new Position(9, 9);
+                Map.Joueur.CanSwim = true;
             }
         }
-        public bool canTalk()
+        public bool CanTalk()
         {
-            if (map.Joueur.Direction == EDirection.HAUT && map.Npc.Position.Y == map.Joueur.Position.Y - 1)
+            if (Map.Joueur.Direction == EDirection.Haut && Map.Npc.Position.Y == Map.Joueur.Position.Y - 1)
             {
                 return true;
             }
-            else if (map.Joueur.Direction == EDirection.BAS && map.Npc.Position.Y == map.Joueur.Position.Y + 1)
+            else if (Map.Joueur.Direction == EDirection.Bas && Map.Npc.Position.Y == Map.Joueur.Position.Y + 1)
             {
                 return true;
             }
-            else if (map.Joueur.Direction == EDirection.GAUCHE && map.Npc.Position.X == map.Joueur.Position.X - 1)
+            else if (Map.Joueur.Direction == EDirection.Gauche && Map.Npc.Position.X == Map.Joueur.Position.X - 1)
             {
                 return true;
             }
-            else if (map.Joueur.Direction == EDirection.DROITE && map.Npc.Position.X == map.Joueur.Position.X + 1)
+            else if (Map.Joueur.Direction == EDirection.Droite && Map.Npc.Position.X == Map.Joueur.Position.X + 1)
             {
                 return true;
             }
             else
             {
-                Console.WriteLine(" ");
-                Console.WriteLine(map.Npc.Position.X + " " + map.Npc.Position.Y);
-                Console.WriteLine(map.Joueur.Position.X + " " + map.Joueur.Position.Y);
-
                 return false;
             }
         }
@@ -111,36 +104,35 @@ namespace Rpg
         public void Display()
         {
             if (msc.IsEnter)
-                msc.mav.Display();
+                msc.Mav.Display();
             else
             {
-                mv.Display();
+                Mv.Display();
             }
         }
 
-        public void input(ConsoleKey p_key)
+        public void Input(ConsoleKey pKey)
         {
-            switch (p_key)
+            switch (pKey)
             {
                 case ConsoleKey.UpArrow:
-                    map.Joueur.Bouger(0, -1);
-                    map.Joueur.Direction = EDirection.HAUT;
+                    Map.Joueur.Bouger(0, -1);
+                    Map.Joueur.Direction = EDirection.Haut;
                     break;
                 case ConsoleKey.DownArrow:
-                    map.Joueur.Bouger(0, 1);
-                    map.Joueur.Direction = EDirection.BAS;
+                    Map.Joueur.Bouger(0, 1);
+                    Map.Joueur.Direction = EDirection.Bas;
                     break;
                 case ConsoleKey.RightArrow:
-                    map.Joueur.Bouger(1, 0);
-                    map.Joueur.Direction = EDirection.DROITE;
+                    Map.Joueur.Bouger(1, 0);
+                    Map.Joueur.Direction = EDirection.Droite;
                     break;
                 case ConsoleKey.LeftArrow:
-                    map.Joueur.Bouger(-1, 0);
-                    map.Joueur.Direction = EDirection.GAUCHE;
+                    Map.Joueur.Bouger(-1, 0);
+                    Map.Joueur.Direction = EDirection.Gauche;
                     break;
                 case ConsoleKey.Enter:
-                    talk();
-                    //map.Joueur.Position = new Position(9, 9);
+                    Talk();
                     break;
                 default:
                     break;

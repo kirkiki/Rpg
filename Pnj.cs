@@ -8,23 +8,9 @@ namespace Rpg
 {
     class Pnj
     {
-        private Position position;
-        public Pnj(Position p_position)
-        {
-            Position = p_position;
-        }
+        private Position _position;
+        public Pnj(Position pPosition){Position = pPosition;}
 
-        internal Position Position
-        {
-            get
-            {
-                return position;
-            }
-
-            set
-            {
-                position = value;
-            }
-        }
+        public Position Position { get { return _position; } set { _position = value; } }
     }
 }

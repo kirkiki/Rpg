@@ -11,15 +11,15 @@ namespace Rpg
 {
     class Eau
     {
-        private Position position;
-        private string emblemeEeu = "~";
-        public Eau(Position p_position)
+        private Position _position;
+        private string _emblemeEeu = "~";
+        public Eau(Position pPosition)
         {
-            position = p_position;
+            _position = pPosition;
         }
-        public string embleme
+        public string Embleme
         {
-            get { return emblemeEeu; }
+            get { return _emblemeEeu; }
         }
     }
 }
