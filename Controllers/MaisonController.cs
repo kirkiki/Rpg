@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Rpg.Models;
+using Rpg.Views;
 
-namespace Rpg
+namespace Rpg.Controllers
 {
     class MaisonController : Controller
 

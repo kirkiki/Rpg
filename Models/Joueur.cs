@@ -1,5 +1,6 @@
 ﻿using System;
-namespace Rpg
+
+namespace Rpg.Models
 {
     enum EDirection
     {

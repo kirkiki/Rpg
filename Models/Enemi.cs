@@ -1,8 +1,8 @@
-﻿namespace Rpg
-{
-    using System;
+﻿using System;
 
-    class Enemi:Personnage
+namespace Rpg.Models
+{
+	class Enemi:Personnage
     {
         public Enemi(String pNom, int pVie)
         {

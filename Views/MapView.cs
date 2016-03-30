@@ -1,6 +1,8 @@
 ﻿using System;
+using Rpg.Controllers;
+using Rpg.Models;
 
-namespace Rpg
+namespace Rpg.Views
 {
     class MapView
     {

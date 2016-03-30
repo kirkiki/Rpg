@@ -1,8 +1,8 @@
-﻿namespace Rpg
-{
-    using System;
+﻿using System;
 
-    public abstract class Personnage
+namespace Rpg.Models
+{
+	public abstract class Personnage
     {
         protected int Vie;
         protected int Attaque;

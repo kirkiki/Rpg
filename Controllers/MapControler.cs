@@ -1,5 +1,8 @@
 ﻿using System;
-namespace Rpg
+using Rpg.Models;
+using Rpg.Views;
+
+namespace Rpg.Controllers
 {
     class MapControler
     {
