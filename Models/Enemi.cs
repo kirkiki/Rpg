@@ -2,15 +2,25 @@
 
 namespace Rpg.Models
 {
-	class Enemi:Personnage
+	public abstract class Enemi:Personnage
     {
-        public Enemi(String pNom, int pVie)
+        public Enemi()
         {
-            this.Nom = pNom;
-            this.Vie = pVie;
         }
 
-        public override void Attaquer()
+	    public string Nom1
+	    {
+	        get { return this.Nom; }
+            set { this.Nom = value; }
+        }
+
+	    public int Vie1
+	    {
+	        get { return this.Vie; }
+            set { this.Vie = value; }
+	    }
+
+	    public override void Attaquer()
         {
             throw new NotImplementedException();
         }
@@ -20,9 +30,9 @@ namespace Rpg.Models
             throw new NotImplementedException();
         }
 
-        public override void PrendreDesDegats()
+        public override void PrendreDesDegats(int degats)
         {
-            throw new NotImplementedException();
+            Vie1 -= degats;
         }
     }
 }

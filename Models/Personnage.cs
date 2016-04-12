@@ -13,7 +13,7 @@ namespace Rpg.Models
         // methodes virtuelles
         public abstract void Attaquer();
 
-        public abstract void PrendreDesDegats();
+        public abstract void PrendreDesDegats(int degats);
 
         public abstract void Bouger(int pVelociteX, int pVelociteY);
 

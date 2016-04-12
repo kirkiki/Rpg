@@ -3,56 +3,56 @@
     class Map
     {
 
-        private static string _sol = "-";
+        private static string _sol = " ";
         private static string _arbre = "O";
         private static string _maison = "A";
         private static string _eau = "~";
         private static string _pnj = "L";
 
-        private static string H = _maison;
-        private static string O = _sol;
-        private static string I = _arbre;
-        private static string E = _eau;
-        private static string D = _pnj;
+        private static string _h = _maison;
+        private static string _o = _sol;
+        private static string _ = _arbre;
+        private static string _e = _eau;
+        private static string _d = _pnj;
 
         private string[,] _plan = new string[,]
         {
-            {I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,I,I,I,I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,I,I,I,I,I,I,I,I,I,I,I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,H,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,D,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,I},
-            {I,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,E,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,O,I},
-            {I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I,I}
+            {_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_,_,_,_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_,_,_,_,_,_,_,_,_,_,_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_h,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_d,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_},
+            {_,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_e,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_o,_},
+            {_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_,_}
         };
 
         Joueur _joueur = new Joueur("Ronan");
-        Pnj _npc = new Pnj(new Position(0,0));
+        Pnj _npc = new Pnj(new Position(0, 0));
 
         public string[,] Plan
         {

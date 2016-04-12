@@ -26,7 +26,7 @@ namespace Rpg.Views
                         Console.Write(_maison.Joueur.Embleme);
                         j++;
                     }
-                    Console.Write(_maison.GetMaisonBloc(i,j));
+                    Console.Write(_maison.GetMaisonBloc(i, j));
                 }
                 Console.WriteLine();
             }

@@ -9,12 +9,15 @@ namespace Rpg.Controllers
         public MapView Mv { get; private set; }
 
         public Map Map = new Map();
-        MaisonController msc;
+        MaisonController _msc;
+        private CombatControler _cbc;
 
         public MapControler()
         {
             Mv = new MapView(this);
-            msc = new MaisonController(this);
+            _msc = new MaisonController(this);
+            _cbc = new CombatControler(this);
+
         }
         public void Start()
         {
@@ -24,15 +27,17 @@ namespace Rpg.Controllers
         {
             ConsoleKeyInfo info = Console.ReadKey();
             Mv.GetInfoTouche(info);
-            if (msc.IsEnter)
-                msc.Move();
+            if (_msc.IsEnter)
+                _msc.Move();
             else
+            {
+                Combat();
                 Move();
+            }
             Display();
 
             if (Map.Joueur.IsDead) { return false; }
             else { return true; }
-
         }
 
         public void Move()
@@ -56,10 +61,10 @@ namespace Rpg.Controllers
                 Map.Joueur.Position = nextPos;
             }
 
-            else if (Map.Plan[nextPos.Y, nextPos.X] == Map.Maison && Map.Joueur.Direction==EDirection.Haut)
+            else if (Map.Plan[nextPos.Y, nextPos.X] == Map.Maison && Map.Joueur.Direction == EDirection.Haut)
             {
-                msc.IsEnter = true;
-                msc.Entrer(Map.Joueur);
+                _msc.IsEnter = true;
+                _msc.Entrer(Map.Joueur);
             }
             else {
                 Map.Joueur.Bouger(0, 0);
@@ -104,10 +109,20 @@ namespace Rpg.Controllers
             }
         }
 
+        public void Combat()
+        {
+            Random random = new Random();
+            if (random.Next(0, 1000) < 100)
+            {
+                _cbc.Combating(_cbc.RandEnemis());
+            }
+
+        }
+
         public void Display()
         {
-            if (msc.IsEnter)
-                msc.Mav.Display();
+            if (_msc.IsEnter)
+                _msc.Mav.Display();
             else
             {
                 Mv.Display();
@@ -138,6 +153,7 @@ namespace Rpg.Controllers
                     Talk();
                     break;
                 default:
+                    Map.Joueur.Bouger(0, 0);
                     break;
             }
         }

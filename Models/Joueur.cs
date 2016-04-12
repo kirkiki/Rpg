@@ -50,10 +50,10 @@ namespace Rpg.Models
 
         public override void Attaquer()
         {
-            throw new NotImplementedException();
+            
         }
 
-        public override void PrendreDesDegats()
+        public override void PrendreDesDegats(int degats)
         {
             throw new NotImplementedException();
         }
