@@ -154,6 +154,9 @@ namespace Rpg.Controllers
                 case ConsoleKey.Enter:
                     Talk();
                     break;
+                case ConsoleKey.I:
+                    _ivc.Check(Map.Joueur);
+                    break;
                 default:
                     Map.Joueur.Bouger(0, 0);
                     break;

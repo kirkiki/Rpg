@@ -48,6 +48,7 @@
     <Compile Include="Controllers\Controller.cs" />
     <Compile Include="Controllers\HomeControler.cs" />
     <Compile Include="Controllers\InventaireControler.cs" />
+    <Compile Include="Controllers\ItemControler.cs" />
     <Compile Include="Controllers\MaisonController.cs" />
     <Compile Include="Controllers\MapControler.cs" />
     <Compile Include="Models\Arbre.cs" />

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 
 namespace Rpg.Models
 {
@@ -11,12 +13,21 @@ namespace Rpg.Models
 
         Position _position = new Position(1, 1);
         private string _embleme = "X";
-        private int _vie = 100;
+        private int _currentvie = 100;
         private int _velociteX = 0;
         private int _velociteY = 0;
         private bool _canSwim = false;
         private EDirection _direction;
         private bool _isDead = false;
+        private List<int> sac = new List<int>();
+        private List<int> stuff = new List<int>();
+       
+        
+        public List<int> Stuff {get { return stuff; }  set { stuff = value; } }
+
+        public List<int> Sac{ get { return sac; } set { sac = value; }}
+
+        public int Currentvie {  get { return _currentvie; } set { _currentvie = value; }}
 
         public string Embleme { get { return _embleme; } }
 
@@ -31,6 +42,8 @@ namespace Rpg.Models
         public EDirection Direction { get { return _direction; } set { _direction = value; } }
 
         public bool IsDead{get{return _isDead;}set{_isDead = value;}}
+
+
 
         public Joueur(String pNom)
         {
