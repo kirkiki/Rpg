@@ -25,13 +25,17 @@ namespace Rpg.Controllers
 
         public void Check(Joueur Perso)
         {
-            
+         //test here
+            Perso.Sac.Add(1);
+            Perso.Stuff.Add(1);
+        // fin test
             while (continuer)
             {
                 _ivView.Display(Perso);
                 ConsoleKeyInfo cki = Console.ReadKey();
                 _ivView.GetInfoTouche(cki);
             }
+            continuer = true;
 
         }
 

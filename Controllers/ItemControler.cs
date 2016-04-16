@@ -54,7 +54,7 @@ namespace Rpg.Controllers
             return Name;
         }
 
-        static string GetEff(int index)
+        static public string GetEff(int index)
         {
             string Eff = null;
             switch (index)
