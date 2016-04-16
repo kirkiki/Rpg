@@ -11,12 +11,14 @@ namespace Rpg.Controllers
         public Map Map = new Map();
         MaisonController _msc;
         private CombatControler _cbc;
+        private InventaireControler _ivc;
 
         public MapControler()
         {
             Mv = new MapView(this);
             _msc = new MaisonController(this);
             _cbc = new CombatControler(this);
+            _ivc = new InventaireControler(this);
 
         }
         public void Start()
