@@ -24,9 +24,13 @@ namespace Rpg.Views
             _ivControler.Input(cki.Key);
         }
 
-        public void Display(Joueur Perso)
+        public void DisplayI(Joueur Perso)
         {
             Console.Clear();
+
+            Console.WriteLine("-------- Menu -------");
+            Console.WriteLine("--- O : Objectif --- E : Equipement ---");
+            Console.WriteLine("");
             Console.WriteLine("-------- Perso -------");
             Console.WriteLine("Nom :" + Perso.Nom);
             Console.WriteLine("Pv :" + Perso.Currentvie + "/" + Perso.Vie);
@@ -46,7 +50,49 @@ namespace Rpg.Views
                 Console.WriteLine(i + 1 + ")" + ItemControler.GetName(Perso.Stuff[i]) + " = " + ItemControler.GetDesc(Perso.Stuff[i]));
                 Console.WriteLine("->" + ItemControler.GetEff(Perso.Stuff[i]));
             }
+        }
 
+        public void DisplayO(Joueur Perso) {
+            Console.Clear();
+
+            Console.WriteLine("-------- Objectif -------");
+            Console.WriteLine("--- I : Menu --- E : Equipement ---");
+            Console.WriteLine("");
+            Console.WriteLine("Bonjour "+ Perso.Nom + " Il est temps d'apprendre a nager!");
+
+        }
+
+        public void DisplayE(Joueur Perso, int trigger, int page)
+        {
+            Console.Clear();
+
+            Console.WriteLine("-------- Equipement -------");
+            Console.WriteLine("--- I : Menu --- O : Objectif ---");
+            Console.WriteLine("");
+            Console.WriteLine("--- S : Equiper --- D : Déequiper ---");
+            
+            
+            if (trigger == 1)
+            {
+                Console.WriteLine("--- <-- Changer Page --> ---");
+                Console.WriteLine("--- <-- Page " + page + "--> ---");
+
+                for (int i = 5 * page; i < Perso.Sac.Count() - 1 && i < 5 * (page +1 ); i++)
+                {
+                    Console.WriteLine(i + 1 + ") " + ItemControler.GetName(Perso.Sac[i]) + " = " + ItemControler.GetEff(Perso.Sac[i]));
+                }
+
+            }
+            if (trigger == 2)
+            {
+                Console.WriteLine("--- <-- Changer Page --> ---");
+                Console.WriteLine("---    " + page + "    ---");
+
+                for (int i = 5 * page; i < Perso.Stuff.Count() - 1 && i < 5 * (page + 1); i++)
+                {
+                    Console.WriteLine(i + 1 + ") " + ItemControler.GetName(Perso.Stuff[i]) + " = " + ItemControler.GetEff(Perso.Stuff[i]));
+                }
+            }
 
         }
 
