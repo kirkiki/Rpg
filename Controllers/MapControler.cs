@@ -33,7 +33,7 @@ namespace Rpg.Controllers
                 _msc.Move();
             else
             {
-                //Combat();
+                Combat();
                 Move();
             }
             Display();
@@ -117,7 +117,7 @@ namespace Rpg.Controllers
             Random random = new Random();
             if (random.Next(0, 1000) < 100)
             {
-                _cbc.Combating(_cbc.RandEnemis());
+                _cbc.Combating(_cbc.RandEnemis(), Map.Joueur);
             }
 
         }

@@ -16,10 +16,11 @@ namespace Rpg.Controllers
         private CombatView _cbView;
         private bool _isCombating = false;
         private Enemi _combatEnemi;
+        private Joueur _perso;
         private Enemi[] _enemi = new Enemi[] { new Singe(), new Loup(), };
 
-        //instancier les models des objets pour le futur
-        private static string[] _loot = new string[] { "une pomme", "de la poussiere", "un rubis", "des palmes" };
+
+        private List<string> _loot = new List<string>();
 
         public CombatControler(MapControler pMapControler)
         {
@@ -33,23 +34,29 @@ namespace Rpg.Controllers
             set { _combatEnemi = value; }
         }
 
-        public void Combating(Enemi pEnemi)
+        public void Combating(Enemi pEnemi, Joueur pperso)
         {
-            _combatEnemi = RandEnemis();
+            string loot;
+            _combatEnemi = pEnemi;
+            _perso = pperso;
             _isCombating = true;
             while (_isCombating == true)
             {
-                if (_combatEnemi.Vie1 <= 0)
+                if (_combatEnemi.Vie1 <= 0) //fin combat
                 {
                     _isCombating = false;
-                    Console.WriteLine("vous avez gagner " +RandLoot());
-                    _cbView.EcranFin();
+                    loot = RandLoot();
+                    pperso.GainItem(loot);
+                    pperso.Exp += 20;
+                    pperso.Lvup();
+                    
+                    _cbView.EcranFin(loot);
                     ConsoleKeyInfo enter = Console.ReadKey();
                     if (enter.Key == ConsoleKey.Enter)
                     {
                         break;
                     }
-                }
+                }//
                 _cbView.Display();
                 ConsoleKeyInfo cki = Console.ReadKey();
                 if (cki.Key == ConsoleKey.Escape)
@@ -57,6 +64,7 @@ namespace Rpg.Controllers
                 _cbView.GetInfoTouche(cki);
                 ConsoleKeyInfo entree = Console.ReadKey();
                 _cbView.GetInfoTouche(entree);
+               
             }
         }
 
@@ -69,23 +77,24 @@ namespace Rpg.Controllers
 
         public string RandLoot()
         {
+            _loot.Add("Epee en bois");
+            
             Random random = new Random((int)DateTime.Now.Ticks);
-            int rand = random.Next(0, 100);
-            string value="";
-            if (rand >= 90)
-                value = "un rubis";
-            else if (rand >= 70 && rand < 90)
-            {
-                value = "des palmes";
-                _mpc.Map.Joueur.GotWebbed = true;
-            }
-            else if (rand >= 40 && rand < 70)
-                value = "une pomme";
-            else if (rand >= 0 && rand < 40)
-            {
-                value = "de la poussiere";
-            }
-            return value;
+            int rand = random.Next(0, _loot.Count() - 1);
+          
+            
+            return _loot[rand];
+        }
+
+        public void attaqueEnnemi()
+        {
+            int damage;
+            
+            Console.WriteLine(_combatEnemi.Nom + "vous attaque!");
+            damage = (_combatEnemi.Attaque - _perso.Defense) * 10;
+            if (damage < 0) {damage = 0;}
+            _perso.Currentvie -= damage;
+            Console.WriteLine("Il vous inflige " + damage + "degats, il vous reste" + _perso.Currentvie + "PV.");
         }
 
         public void Input(ConsoleKey ck)
@@ -93,10 +102,15 @@ namespace Rpg.Controllers
             switch (ck)
             {
                 case ConsoleKey.A:
+                    int damage;
                     _cbView.Display();
-                    Console.WriteLine("vous avez lancé un coup d'épée");
-                    _combatEnemi.PrendreDesDegats(10);
+                    Console.WriteLine("Vous avez lancé un coup d'épée");
+                    damage = (_perso.Attaque - _combatEnemi.Defense) * 10;
+                    if (damage < 0) { damage = 0;}
+                    _combatEnemi.PrendreDesDegats(damage);
+                    Console.WriteLine("Vous infligez " + damage + " a " + _combatEnemi.Nom);
                     Console.WriteLine();
+                    attaqueEnnemi();
                     Console.WriteLine("Appuyez sur entrer...");
                     break;
                 case ConsoleKey.Z:
@@ -104,6 +118,7 @@ namespace Rpg.Controllers
                     Console.WriteLine("vous avez lancé un sort");
                     _combatEnemi.PrendreDesDegats(20);
                     Console.WriteLine();
+                    attaqueEnnemi();
                     Console.WriteLine("Appuyez sur entrer...");
                     break;
                 case ConsoleKey.Enter:
@@ -112,6 +127,8 @@ namespace Rpg.Controllers
                     Console.WriteLine("fait pas le fou");
                     break;
             }
+
+            
         }
     }
 }

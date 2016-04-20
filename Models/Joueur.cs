@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Rpg.Controllers;
 
 
 namespace Rpg.Models
@@ -13,7 +14,7 @@ namespace Rpg.Models
 
         Position _position = new Position(15, 25);
         private string _embleme = "X";
-        private int _currentvie = 100;
+        private int _currentvie = 0;
         private int _velociteX = 0;
         private int _velociteY = 0;
         private bool _canSwim = false;
@@ -22,8 +23,16 @@ namespace Rpg.Models
         private bool _isDead = false;
         private List<Item> sac = new List<Item>();
         private List<Item> stuff = new List<Item>();
+        private int level = 1;
+        private int exp = 0;
+        private int nextlv = 5;
+
+        public int Nextlv{ get { return nextlv; } set { nextlv = value; } }
 
 
+        public int Exp{ get { return exp; } set { exp = value; } }
+
+        public int Level { get { return level; } set { level = value; } }
 
         public List<Item> Stuff { get { return stuff; } set { stuff = value; } }
 
@@ -50,6 +59,26 @@ namespace Rpg.Models
         public Joueur(String pNom)
         {
             this.Nom = pNom;
+            this.Vie = 200;
+            this.Currentvie = 200;
+        }
+
+        public void Lvup()
+        {
+            while (exp >= nextlv)
+            {
+                nextlv *= 2;
+                Vie += 20;
+                Currentvie = Vie;
+                Attaque ++;
+                Defense++;
+            }
+        }
+
+        public void GainItem(string item)
+        {
+            Item ajout = ItemControler.Create(item);
+            sac.Add(ajout);
         }
 
         public Position NextPosition()

@@ -37,7 +37,7 @@ namespace Rpg.Views
             Console.WriteLine("Attaque :" + Perso.Attaque + " - Defense :" + Perso.Defense);
 
             Console.WriteLine("-------- Inventaire -------");
-            for (int i = 0; i < Perso.Sac.Count() - 1; i++)
+            for (int i = 0; i < Perso.Sac.Count(); i++)
             {
                 Console.WriteLine(i + 1 + ")" + Perso.Sac[i].Nom + " = " + Perso.Sac[i].Description);
                 Console.WriteLine("->" + Perso.Sac[i].Effet);
@@ -45,7 +45,7 @@ namespace Rpg.Views
             }
 
             Console.WriteLine("-------- Equipement -------");
-            for (int i = 0; i < Perso.Stuff.Count() - 1; i++)
+            for (int i = 0; i < Perso.Stuff.Count(); i++)
             {
                 Console.WriteLine(i + 1 + ")" + Perso.Stuff[i].Nom + " = " + Perso.Stuff[i].Description);
                 Console.WriteLine("->" + Perso.Stuff[i].Effet);
@@ -77,7 +77,7 @@ namespace Rpg.Views
                 Console.WriteLine("--- <-- Changer Page --> ---");
                 Console.WriteLine("--- <-- Page " + page + "--> ---");
 
-                for (int i = 5 * page; i < Perso.Sac.Count() - 1 && i < 5 * (page +1 ); i++)
+                for (int i = 5 * page; i < Perso.Sac.Count() && i < 5 * (page +1 ); i++)
                 {
                     Console.WriteLine(i + 1 + ") " + Perso.Sac[i].Nom + " = " + Perso.Sac[i].Effet);
                 }
@@ -88,7 +88,7 @@ namespace Rpg.Views
                 Console.WriteLine("--- <-- Changer Page --> ---");
                 Console.WriteLine("---    " + page + "    ---");
 
-                for (int i = 5 * page; i < Perso.Stuff.Count() - 1 && i < 5 * (page + 1); i++)
+                for (int i = 5 * page; i < Perso.Stuff.Count() && i < 5 * (page + 1); i++)
                 {
                     Console.WriteLine(i + 1 + ") " + Perso.Stuff[i].Nom + " = " + Perso.Stuff[i].Effet);
                 }

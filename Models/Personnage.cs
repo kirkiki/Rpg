@@ -5,8 +5,8 @@ namespace Rpg.Models
 	public abstract class Personnage
     {
         private int vie;
-        private int attaque;
-        private int defense;
+        private int attaque = 1;
+        private int defense = 0;
         private String nom;       
         protected bool mort;
 

@@ -26,10 +26,11 @@ namespace Rpg.Views
 
         }
 
-        public void EcranFin()
+        public void EcranFin(string ploot)
         {
             Console.Clear();
             Console.WriteLine("vous avez vaincu cet Enemi!");
+            Console.WriteLine("vous avez gagné " + ploot); 
             Console.WriteLine("appuyez sur entrée");
         }
 
