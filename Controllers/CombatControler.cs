@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Rpg.Models;
@@ -16,15 +18,14 @@ namespace Rpg.Controllers
         private Enemi _combatEnemi;
         private Enemi[] _enemi = new Enemi[] { new Singe(), new Loup(), };
 
-
+        //instancier les models des objets pour le futur
+        private static string[] _loot = new string[] { "une pomme", "de la poussiere", "un rubis", "des palmes" };
 
         public CombatControler(MapControler pMapControler)
         {
             _mpc = pMapControler;
             _cbView = new CombatView(this);
-
         }
-
 
         public Enemi CombatEnemi
         {
@@ -41,9 +42,10 @@ namespace Rpg.Controllers
                 if (_combatEnemi.Vie1 <= 0)
                 {
                     _isCombating = false;
+                    Console.WriteLine("vous avez gagner " +RandLoot());
                     _cbView.EcranFin();
                     ConsoleKeyInfo enter = Console.ReadKey();
-                    if (enter.Key==ConsoleKey.Enter)
+                    if (enter.Key == ConsoleKey.Enter)
                     {
                         break;
                     }
@@ -58,13 +60,32 @@ namespace Rpg.Controllers
             }
         }
 
-
-
         public Enemi RandEnemis()
         {
             Random random = new Random((int)DateTime.Now.Ticks);
             int var = random.Next(0, _enemi.Length);
             return _enemi[var];
+        }
+
+        public string RandLoot()
+        {
+            Random random = new Random((int)DateTime.Now.Ticks);
+            int rand = random.Next(0, 100);
+            string value="";
+            if (rand >= 90)
+                value = "un rubis";
+            else if (rand >= 70 && rand < 90)
+            {
+                value = "des palmes";
+                _mpc.Map.Joueur.GotWebbed = true;
+            }
+            else if (rand >= 40 && rand < 70)
+                value = "une pomme";
+            else if (rand >= 0 && rand < 40)
+            {
+                value = "de la poussiere";
+            }
+            return value;
         }
 
         public void Input(ConsoleKey ck)
