@@ -11,7 +11,7 @@ namespace Rpg.Models
     class Joueur : Personnage
     {
 
-        Position _position = new Position(1, 1);
+        Position _position = new Position(15, 25);
         private string _embleme = "X";
         private int _currentvie = 100;
         private int _velociteX = 0;

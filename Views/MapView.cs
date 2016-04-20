@@ -29,7 +29,7 @@ namespace Rpg.Views
                     }
                     _mpc.DisplayEmbleme(_map.Sol, j, i);
                     if (_mpc.DisplayEmbleme(_map.Pnj, j, i))
-                        _map.Npc.Position = new Position(10,13);
+                        _map.Npc.Position = new Position(15,11);
                     _mpc.DisplayEmbleme(_map.Eau, j, i);
                     _mpc.DisplayEmbleme(_map.Arbre, j, i);
                     _mpc.DisplayEmbleme(_map.Maison, j, i);
