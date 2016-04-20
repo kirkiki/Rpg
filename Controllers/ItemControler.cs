@@ -8,7 +8,7 @@ namespace Rpg.Controllers
 {
     class ItemControler
     {
-
+     
         static public int GetIndex(string pnom)
         {
             int index = 0;
@@ -68,6 +68,5 @@ namespace Rpg.Controllers
             }
             return Eff;
         }
-
     }
 }

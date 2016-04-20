@@ -84,7 +84,8 @@ namespace Rpg.Controllers
         {
             if (CanTalk())
             {
-                Map.Joueur.CanSwim = true;
+                //Map.Joueur.CanSwim = true;
+                Pnj.SwimmingAbility(Map.Joueur);
             }
         }
         public bool CanTalk()
