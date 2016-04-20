@@ -8,7 +8,7 @@ namespace Rpg.Controllers
     {
         public MaisonView Mav { get; private set; }
         //Position position=new Position(3,5);//a changer si on bouge la maison
-        public Maison Maison = new Maison(new Position(3, 5));
+        public Maison Maison = new Maison(new Position(15,0));
         private bool _isEnter = false;
         private MapControler _mapControler;
 

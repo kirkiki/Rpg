@@ -33,7 +33,7 @@ namespace Rpg.Controllers
                 _msc.Move();
             else
             {
-                Combat();
+                //Combat();
                 Move();
             }
             Display();
