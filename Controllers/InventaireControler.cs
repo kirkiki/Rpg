@@ -154,9 +154,10 @@ namespace Rpg.Controllers
                     break;
                 case ConsoleKey.R:
                     //test here
-                    _perso.Sac.Add(1);
-                    _perso.Stuff.Add(1);
-                    // fin test
+                    Item epeeEnbois = ItemControler.Create("Epee en bois");
+                    _perso.Sac.Add(epeeEnbois);
+                    _perso.Stuff.Add(epeeEnbois);
+
                     break;
                 default:
                     break;

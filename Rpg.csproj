@@ -55,6 +55,7 @@
     <Compile Include="Models\Decor.cs" />
     <Compile Include="Models\Eau.cs" />
     <Compile Include="Models\Enemi.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Joueur.cs" />
     <Compile Include="Models\Loup.cs" />
     <Compile Include="Models\Maison.cs" />

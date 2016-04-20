@@ -3,70 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Rpg.Models;
 
 namespace Rpg.Controllers
 {
     class ItemControler
     {
-     
-        static public int GetIndex(string pnom)
+
+      static  public Item Create(string nom)
         {
-            int index = 0;
-            switch (pnom)
-            {
+            Item result = new Item("Name", "Rien du tout", "Rien", false, false, 0, 0, 0);
+            
+            switch(nom){
                 case "Epee en bois":
-                    index = 1;
-                    break;
-                default :
-                    index = 0;
-                    break;
-            }
-            return index;
-        }
-
-        static public string GetDesc(int index)
-        {
-            string desc = null;
-            switch (index)
-            {
-                case 1:
-                    desc = "Un simple jouet";
+                    result.Nom = "Epee en bois";
+                    result.Description = "Une simple épée en bois";
+                    result.Effet = "+1 Attaque";
+                    result.Equipable = true;
+                    result.Consommable = false;
+                    result.Bpv = 0;
+                    result.Battaque = 1;
+                    result.Bdefense = 0;
                     break;
                 default:
-                    desc = "rien du tout";
                     break;
             }
-            return desc;
+            return result;
         }
 
-        static public string GetName(int index)
-        {
-            string Name = null;
-            switch (index)
-            {
-                case 1:
-                    Name = "Epee en bois";
-                    break;
-                default:
-                    Name = "rien du tout";
-                    break;
-            }
-            return Name;
-        }
+      
 
-        static public string GetEff(int index)
-        {
-            string Eff = null;
-            switch (index)
-            {
-                case 1:
-                    Eff = "A+1";
-                    break;
-                default:
-                    Eff = "(-)";
-                    break;
-            }
-            return Eff;
-        }
     }
 }

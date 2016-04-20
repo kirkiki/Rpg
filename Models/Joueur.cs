@@ -20,14 +20,14 @@ namespace Rpg.Models
         private  bool _gotWebbed = false;
         private EDirection _direction;
         private bool _isDead = false;
-        private List<int> sac = new List<int>();
-        private List<int> stuff = new List<int>();
+        private List<Item> sac = new List<Item>();
+        private List<Item> stuff = new List<Item>();
 
 
 
-        public List<int> Stuff { get { return stuff; } set { stuff = value; } }
+        public List<Item> Stuff { get { return stuff; } set { stuff = value; } }
 
-        public List<int> Sac { get { return sac; } set { sac = value; } }
+        public List<Item> Sac { get { return sac; } set { sac = value; } }
 
         public int Currentvie { get { return _currentvie; } set { _currentvie = value; } }
 

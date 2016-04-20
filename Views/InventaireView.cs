@@ -39,16 +39,16 @@ namespace Rpg.Views
             Console.WriteLine("-------- Inventaire -------");
             for (int i = 0; i < Perso.Sac.Count() - 1; i++)
             {
-                Console.WriteLine(i + 1 + ")" + ItemControler.GetName(Perso.Sac[i]) + " = " + ItemControler.GetDesc(Perso.Sac[i]));
-                Console.WriteLine("->" + ItemControler.GetEff(Perso.Sac[i]));
+                Console.WriteLine(i + 1 + ")" + Perso.Sac[i].Nom + " = " + Perso.Sac[i].Description);
+                Console.WriteLine("->" + Perso.Sac[i].Effet);
 
             }
 
             Console.WriteLine("-------- Equipement -------");
             for (int i = 0; i < Perso.Stuff.Count() - 1; i++)
             {
-                Console.WriteLine(i + 1 + ")" + ItemControler.GetName(Perso.Stuff[i]) + " = " + ItemControler.GetDesc(Perso.Stuff[i]));
-                Console.WriteLine("->" + ItemControler.GetEff(Perso.Stuff[i]));
+                Console.WriteLine(i + 1 + ")" + Perso.Stuff[i].Nom + " = " + Perso.Stuff[i].Description);
+                Console.WriteLine("->" + Perso.Stuff[i].Effet);
             }
         }
 
@@ -79,7 +79,7 @@ namespace Rpg.Views
 
                 for (int i = 5 * page; i < Perso.Sac.Count() - 1 && i < 5 * (page +1 ); i++)
                 {
-                    Console.WriteLine(i + 1 + ") " + ItemControler.GetName(Perso.Sac[i]) + " = " + ItemControler.GetEff(Perso.Sac[i]));
+                    Console.WriteLine(i + 1 + ") " + Perso.Sac[i].Nom + " = " + Perso.Sac[i].Effet);
                 }
 
             }
@@ -90,7 +90,7 @@ namespace Rpg.Views
 
                 for (int i = 5 * page; i < Perso.Stuff.Count() - 1 && i < 5 * (page + 1); i++)
                 {
-                    Console.WriteLine(i + 1 + ") " + ItemControler.GetName(Perso.Stuff[i]) + " = " + ItemControler.GetEff(Perso.Stuff[i]));
+                    Console.WriteLine(i + 1 + ") " + Perso.Stuff[i].Nom + " = " + Perso.Stuff[i].Effet);
                 }
             }
 
