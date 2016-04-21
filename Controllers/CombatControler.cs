@@ -49,6 +49,7 @@ namespace Rpg.Controllers
                     pperso.GainItem(loot);
                     pperso.Exp += 20;
                     pperso.Lvup();
+                    InventaireControler.EndBattleDura(pperso);
                     
                     _cbView.EcranFin(loot);
                     ConsoleKeyInfo enter = Console.ReadKey();

@@ -41,7 +41,7 @@ namespace Rpg.Views
             for (int i = 0; i < Perso.Sac.Count(); i++)
             {
                 Console.WriteLine(i + 1 + ")" + Perso.Sac[i].Nom + " = " + Perso.Sac[i].Description);
-                Console.WriteLine("->" + Perso.Sac[i].Effet);
+                Console.WriteLine("->" + Perso.Sac[i].Effet + " Durabilité " + Perso.Sac[i].Durabilite);
 
             }
 
@@ -49,7 +49,7 @@ namespace Rpg.Views
             for (int i = 0; i < Perso.Stuff.Count(); i++)
             {
                 Console.WriteLine(i + 1 + ")" + Perso.Stuff[i].Nom + " = " + Perso.Stuff[i].Description);
-                Console.WriteLine("->" + Perso.Stuff[i].Effet);
+                Console.WriteLine("->" + Perso.Stuff[i].Effet + " Durabilité " + Perso.Stuff[i].Durabilite);
             }
         }
 
@@ -80,7 +80,7 @@ namespace Rpg.Views
 
                 for (int i = 5 * page; i < Perso.Sac.Count() && i < 5 * (page +1 ); i++)
                 {
-                    Console.WriteLine(i + 1 + ") " + Perso.Sac[i].Nom + " = " + Perso.Sac[i].Effet);
+                    Console.WriteLine(i + 1 + ") " + Perso.Sac[i].Nom + " = " + Perso.Sac[i].Effet + " Durabilité " + Perso.Sac[i].Durabilite);
                 }
 
             }
@@ -91,7 +91,7 @@ namespace Rpg.Views
 
                 for (int i = 5 * page; i < Perso.Stuff.Count() && i < 5 * (page + 1); i++)
                 {
-                    Console.WriteLine(i + 1 + ") " + Perso.Stuff[i].Nom + " = " + Perso.Stuff[i].Effet);
+                    Console.WriteLine(i + 1 + ") " + Perso.Stuff[i].Nom + " = " + Perso.Stuff[i].Effet + " Durabilité " + Perso.Sac[i].Durabilite);
                 }
             }
 
