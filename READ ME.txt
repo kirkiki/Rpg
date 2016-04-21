@@ -1,9 +1,11 @@
 JEU: The RPG
 
 Pour bouger: utiliser les fleches.
-Pour parler aux PNJ, utiliser entrer en face de lui. 
+Pour parler aux PNJ, utiliser entrer en face de lui. Malheureusement, il est muet
+pour l'inventaire, appuyez sur I
+
 
 Vous devez trouver les palmes en combatant des monstres! Parlez au PNJ représent par
-un L vous apprendra a nager, si vous les avez. 
+un L vous apprendra a nager, si vous les avez. Entre ensuite dans la grotte :)
 
 Bon jeu
