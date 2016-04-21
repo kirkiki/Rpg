@@ -51,6 +51,8 @@ namespace Rpg.Controllers
                     pperso.Lvup();
                     _enemi[0]=new Singe();
                     _enemi[1]=new Loup();
+                    InventaireControler.EndBattleDura(pperso);
+                    
                     _cbView.EcranFin(loot);
                     ConsoleKeyInfo enter = Console.ReadKey();
                     if (enter.Key == ConsoleKey.Enter)
