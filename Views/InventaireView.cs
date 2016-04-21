@@ -32,9 +32,10 @@ namespace Rpg.Views
             Console.WriteLine("--- O : Objectif --- E : Equipement ---");
             Console.WriteLine("");
             Console.WriteLine("-------- Perso -------");
-            Console.WriteLine("Nom :" + Perso.Nom);
+            Console.WriteLine("Nom :" + Perso.Nom + " Lv " + Perso.Level);
             Console.WriteLine("Pv :" + Perso.Currentvie + "/" + Perso.Vie);
             Console.WriteLine("Attaque :" + Perso.Attaque + " - Defense :" + Perso.Defense);
+            Console.WriteLine("EXP : " + Perso.Exp + "/" + Perso.Nextlv);
 
             Console.WriteLine("-------- Inventaire -------");
             for (int i = 0; i < Perso.Sac.Count(); i++)

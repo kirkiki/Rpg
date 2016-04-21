@@ -26,6 +26,7 @@ namespace Rpg.Controllers
                     result.Bdefense = 0;
                     break;
                 default:
+                    result.Nom = nom;
                     break;
             }
             return result;

@@ -17,7 +17,7 @@ namespace Rpg.Controllers
 
         private bool continuer = true;
         private int state = 0;
-        private int trigger = 0;
+        private int equipState = 0;
         private int page = 0;
 
         public InventaireControler(MapControler pMapControler)
@@ -42,7 +42,7 @@ namespace Rpg.Controllers
                         _ivView.DisplayO(Perso);
                         break;
                     case 2:
-                        _ivView.DisplayE(Perso, trigger, page);
+                        _ivView.DisplayE(Perso, equipState, page);
                         break;
                 }
                 ConsoleKeyInfo cki = Console.ReadKey();
@@ -54,15 +54,30 @@ namespace Rpg.Controllers
 
         public void changeEquip(int input)
         {
-            if (trigger == 1)
+            if (equipState == 1)
             {
-                _perso.Stuff.Add(_perso.Sac[page * 5 + input]);
-                _perso.Sac.RemoveAt(page * 5 + input);
+                
+
+                _perso.Stuff.Add(_perso.Sac[page * 5 + input - 1]);
+                _perso.Sac.RemoveAt(page * 5 + input - 1);
+
+                _perso.Attaque += _perso.Stuff[page * 5 + input - 1].Battaque;
+                _perso.Defense += _perso.Stuff[page * 5 + input - 1].Bdefense;
+                _perso.Vie += _perso.Stuff[page * 5 + input - 1].Bpv;
+
             }
-            if (trigger == 2)
+            if (equipState == 2)
             {
-                _perso.Sac.Add(_perso.Stuff[page * 5 + input]);
-                _perso.Stuff.RemoveAt(page * 5 + input);
+                _perso.Sac.Add(_perso.Stuff[page * 5 + input - 1]);
+                _perso.Stuff.RemoveAt(page * 5 + input - 1);
+
+                _perso.Attaque -= _perso.Sac[page * 5 + input - 1].Battaque;
+                _perso.Defense -= _perso.Sac[page * 5 + input - 1].Bdefense;
+                _perso.Vie -= _perso.Sac[page * 5 + input - 1].Bpv;
+                if (_perso.Currentvie > _perso.Vie)
+                {
+                    _perso.Currentvie = _perso.Vie;
+                }
             }
         }
         
@@ -83,36 +98,36 @@ namespace Rpg.Controllers
                     state = 2;
                     break;
                 case ConsoleKey.S:
-                    if (trigger == 0)
+                    if (equipState == 0)
                     {
-                        trigger = 1;
+                        equipState = 1;
                     }
                     else
                     {
-                        trigger = 0;
+                        equipState = 0;
                     }
                     break;
                 case ConsoleKey.D:
-                    if (trigger == 0)
+                    if (equipState == 0)
                     {
-                        trigger = 2;
+                        equipState = 2;
                         page = 0;
                     }
                     else
                     {
-                        trigger = 0;
+                        equipState = 0;
                         page = 0;
                     }
                     break;
                 case ConsoleKey.LeftArrow:
-                    if (trigger == 1)
+                    if (equipState == 1)
                     {
                         if (page - 1 >= 0)
                         {
                             page--;
                         }
                     }
-                    if (trigger == 2)
+                    if (equipState == 2)
                     {
                         if (page - 1 >= 0)
                         {
@@ -122,14 +137,14 @@ namespace Rpg.Controllers
 
                     break;
                 case ConsoleKey.RightArrow:
-                    if (trigger == 1)
+                    if (equipState == 1)
                     {
                         if (page + 1 < (_perso.Sac.Count()/5) +1)
                         {
                             page++;
                         }
                     }
-                    if (trigger == 2)
+                    if (equipState == 2)
                     {
                         if (page + 1 < (_perso.Stuff.Count() / 5) + 1)
                         {
@@ -156,7 +171,7 @@ namespace Rpg.Controllers
                     //test here
                     Item epeeEnbois = ItemControler.Create("Epee en bois");
                     _perso.Sac.Add(epeeEnbois);
-                    _perso.Stuff.Add(epeeEnbois);
+                    
 
                     break;
                 default:
