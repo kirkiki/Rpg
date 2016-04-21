@@ -31,5 +31,40 @@ namespace Rpg.Views
                 Console.WriteLine();
             }
         }
+
+
+        public void keblo()
+        {
+            Console.Clear();
+            Console.WriteLine("Soudain les portes se referment");
+            Console.WriteLine("Vous êtes enfermé a jamais");
+            Console.WriteLine("Appuyez sur une touche");
+        }
+
+        public void GameOver(int random)
+        {
+            string txt = "";
+            switch (random)
+            {
+                case 0:
+                    txt = "Vous êtes mort";
+                    break;
+                case 1:
+                    txt = "Game Over";
+                    break;
+                case 2:
+                    txt = "Vous êtes nul quand même";
+                    break;
+                case 3:
+                    txt = "Vous me devez un kebab";
+                    break;
+                default:
+                    break;
+            }
+            Console.WriteLine(txt);
+        }
+
     }
+
+     
 }

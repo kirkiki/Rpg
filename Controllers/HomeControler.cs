@@ -43,6 +43,7 @@ namespace Rpg.Controllers
                     hm.Credits();
                     break;
                 default:
+                    Console.Clear();
                     Console.WriteLine("arrete Daniel-senpai, notre jeu est parfait");
                     break;
             }

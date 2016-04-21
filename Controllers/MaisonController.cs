@@ -1,4 +1,11 @@
-﻿using Rpg.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+using Rpg.Models;
 using Rpg.Views;
 
 namespace Rpg.Controllers
@@ -11,6 +18,7 @@ namespace Rpg.Controllers
         public Maison Maison = new Maison(new Position(15,0));
         private bool _isEnter = false;
         private MapControler _mapControler;
+        private int compteur = 0;
 
         public MaisonController(MapControler pMapControler)
         {
@@ -40,6 +48,7 @@ namespace Rpg.Controllers
 
         public void Move()
         {
+            
             Position nextPos = new Position(Maison.Joueur.Position.X + Maison.Joueur.VelociteX, Maison.Joueur.Position.Y + Maison.Joueur.VelociteY);
 
             if (nextPos.Y > Maison.GetLongueur() || nextPos.X > Maison.GetLargeur())
@@ -53,6 +62,21 @@ namespace Rpg.Controllers
             else if (Maison.GetMaisonBloc(nextPos.Y, nextPos.X) == Maison.Sol)
             {
                 Maison.Joueur.Position = nextPos;
+                compteur++;
+                if (compteur >= 5)
+                {
+                    Mav.keblo();
+                    ConsoleKeyInfo enter = Console.ReadKey();
+                   
+                    Random random = new Random((int)DateTime.Now.Ticks);
+                    while (true)
+                    {
+                        int txt = random.Next(0, 4);
+
+                        Mav.GameOver(txt); 
+                    }
+                    
+                }
             }
             else if (Maison.GetMaisonBloc(nextPos.Y, nextPos.X) == Maison.Porte)
             {
