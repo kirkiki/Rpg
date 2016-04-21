@@ -169,10 +169,7 @@ namespace Rpg.Controllers
                     break;
                 case ConsoleKey.R:
                     //test here
-                    Item epeeEnbois = ItemControler.Create("Epee en bois");
-                    _perso.Sac.Add(epeeEnbois);
-                    
-
+                    _mpc.Map.Joueur.GotWebbed = true;
                     break;
                 default:
                     break;

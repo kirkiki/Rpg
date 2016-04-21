@@ -1,19 +1,22 @@
 ﻿using System;
+using Rpg.Views;
 
 namespace Rpg.Controllers
 {
     class HomeControler
     {
         public MapControler Mp { get; private set; }
+        public HomeView hm;
 
         public HomeControler()
         {
             Mp = new MapControler();
+            hm = new HomeView(this);
         }
 
         public void Start()
         {
-             Mp.Start();
+            Mp.Start();
         }
 
         public bool Play()
@@ -21,18 +24,11 @@ namespace Rpg.Controllers
             return Mp.Play();
         }
 
-        public void Display()
+        public void Jouer()
         {
-            Console.WriteLine("J: Jouer");
-            Console.WriteLine("C: Credit");
-        }
-
-        public void Credits()
-        {
-            Console.Clear();
-            Console.WriteLine("Jeu crée par:");
-            Console.WriteLine("Ronan ROBINEAU");
-            Console.WriteLine("Robin CHAPERON");
+            hm.Display();
+            ConsoleKeyInfo info = Console.ReadKey();
+            hm.GetInfoTouche(info);
         }
 
         public void Input(ConsoleKey ckey)
@@ -44,9 +40,10 @@ namespace Rpg.Controllers
                     while (Play()) { }
                     break;
                 case ConsoleKey.C:
-                    Credits();
+                    hm.Credits();
                     break;
                 default:
+                    Console.WriteLine("arrete Daniel-senpai, notre jeu est parfait");
                     break;
             }
 

@@ -15,7 +15,7 @@ namespace Rpg
             HomeControler hm = new HomeControler();
             while (true)
             {
-                hm.Display();
+                hm.Jouer();
                 ConsoleKeyInfo info = Console.ReadKey();
                 hm.Input(info.Key);
             }

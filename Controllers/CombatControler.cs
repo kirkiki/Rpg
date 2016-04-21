@@ -49,7 +49,8 @@ namespace Rpg.Controllers
                     pperso.GainItem(loot);
                     pperso.Exp += 20;
                     pperso.Lvup();
-                    
+                    _enemi[0]=new Singe();
+                    _enemi[1]=new Loup();
                     _cbView.EcranFin(loot);
                     ConsoleKeyInfo enter = Console.ReadKey();
                     if (enter.Key == ConsoleKey.Enter)

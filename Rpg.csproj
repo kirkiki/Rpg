@@ -67,6 +67,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\CombatView.cs" />
+    <Compile Include="Views\HomeView.cs" />
     <Compile Include="Views\InventaireView.cs" />
     <Compile Include="Views\MaisonView.cs" />
     <Compile Include="Views\MapView.cs" />

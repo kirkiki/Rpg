@@ -1,4 +1,6 @@
-﻿namespace Rpg.Models
+﻿using System;
+
+namespace Rpg.Models
 {
     class Pnj
     {
@@ -11,7 +13,12 @@
         {
             if (joueur.GotWebbed)
             {
+                Console.WriteLine("Vous avez des palmes, je vais vous apprendre a nager!");
                 joueur.CanSwim = true;
+            }
+            else
+            {
+                Console.WriteLine("Vous n'avez pas de palmes! Revenez quand vous en aurez");
             }
         }
     }
