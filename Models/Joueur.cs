@@ -59,8 +59,8 @@ namespace Rpg.Models
         public Joueur(String pNom)
         {
             this.Nom = pNom;
-            this.Vie = 200;
-            this.Currentvie = 200;
+            this.Vie = 100;
+            this.Currentvie = 100;
         }
 
         public void Lvup()
@@ -72,6 +72,7 @@ namespace Rpg.Models
                 Currentvie = Vie;
                 Attaque ++;
                 Defense++;
+                level++;
             }
         }
 

@@ -54,20 +54,34 @@ namespace Rpg.Controllers
                     InventaireControler.EndBattleDura(pperso);
                     
                     _cbView.EcranFin(loot);
-                    ConsoleKeyInfo enter = Console.ReadKey();
-                    if (enter.Key == ConsoleKey.Enter)
+                    ConsoleKeyInfo enter = Console.ReadKey();  
+                    while (enter.Key != ConsoleKey.Enter)
                     {
-                        break;
+                         enter = Console.ReadKey();  
                     }
                 }//
+                if (_perso.Currentvie <= 0)
+                {
+                   
+                    while (true)
+                    {
+                        Random random = new Random((int)DateTime.Now.Ticks);
+                        int txt = random.Next(0, 4);
+                        _cbView.GameOver(txt);
+                    }
+
+                }
                 _cbView.Display();
                 ConsoleKeyInfo cki = Console.ReadKey();
                 if (cki.Key == ConsoleKey.Escape)
                     break;
                 _cbView.GetInfoTouche(cki);
-                ConsoleKeyInfo entree = Console.ReadKey();
-                _cbView.GetInfoTouche(entree);
-               
+                
+
+
+                cki = Console.ReadKey();
+                while (cki.Key != ConsoleKey.Enter)
+                    cki = Console.ReadKey();
             }
         }
 
@@ -93,41 +107,36 @@ namespace Rpg.Controllers
         {
             int damage;
             
-            Console.WriteLine(_combatEnemi.Nom + "vous attaque!");
             damage = (_combatEnemi.Attaque - _perso.Defense) * 10;
             if (damage < 0) {damage = 0;}
             _perso.Currentvie -= damage;
-            Console.WriteLine("Il vous inflige " + damage + "degats, il vous reste" + _perso.Currentvie + "PV.");
+            _cbView.attaqueEnnemi(damage, _combatEnemi, _perso);
         }
 
         public void Input(ConsoleKey ck)
         {
             switch (ck)
             {
-                case ConsoleKey.A:
+                case ConsoleKey.D1:
                     int damage;
                     _cbView.Display();
-                    Console.WriteLine("Vous avez lancé un coup d'épée");
                     damage = (_perso.Attaque - _combatEnemi.Defense) * 10;
                     if (damage < 0) { damage = 0;}
                     _combatEnemi.PrendreDesDegats(damage);
-                    Console.WriteLine("Vous infligez " + damage + " a " + _combatEnemi.Nom);
-                    Console.WriteLine();
+                    _cbView.attaqueJoueur(damage, _combatEnemi);
                     attaqueEnnemi();
-                    Console.WriteLine("Appuyez sur entrer...");
                     break;
-                case ConsoleKey.Z:
+                case ConsoleKey.D2:
                     _cbView.Display();
-                    Console.WriteLine("vous avez lancé un sort");
                     _combatEnemi.PrendreDesDegats(20);
-                    Console.WriteLine();
+                    _cbView.lancerSort();
                     attaqueEnnemi();
                     Console.WriteLine("Appuyez sur entrer...");
                     break;
                 case ConsoleKey.Enter:
                     break;
                 default:
-                    Console.WriteLine("fait pas le fou");
+                    Console.WriteLine("fait pas le fou Daniel-sensei");
                     break;
             }
 

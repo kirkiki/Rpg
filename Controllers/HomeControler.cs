@@ -10,7 +10,7 @@ namespace Rpg.Controllers
 
         public HomeControler()
         {
-            Mp = new MapControler();
+            Mp = new MapControler(this);
             hm = new HomeView(this);
         }
 

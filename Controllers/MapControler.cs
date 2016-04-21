@@ -12,15 +12,20 @@ namespace Rpg.Controllers
         MaisonController _msc;
         private CombatControler _cbc;
         private InventaireControler _ivc;
+        private HomeControler _hoc;
 
-        public MapControler()
+        public MapControler(HomeControler phoc)
         {
             Mv = new MapView(this);
             _msc = new MaisonController(this);
             _cbc = new CombatControler(this);
             _ivc = new InventaireControler(this);
+            _hoc = phoc;
 
         }
+
+       
+
         public void Start()
         {
             Mv.Display();
