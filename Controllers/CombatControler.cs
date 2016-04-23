@@ -42,24 +42,7 @@ namespace Rpg.Controllers
             _isCombating = true;
             while (_isCombating == true)
             {
-                if (_combatEnemi.Vie1 <= 0) //fin combat
-                {
-                    _isCombating = false;
-                    loot = RandLoot();
-                    pperso.GainItem(loot);
-                    pperso.Exp += 20;
-                    pperso.Lvup();
-                    _enemi[0]=new Singe();
-                    _enemi[1]=new Loup();
-                    InventaireControler.EndBattleDura(pperso);
-                    
-                    _cbView.EcranFin(loot);
-                    ConsoleKeyInfo enter = Console.ReadKey();  
-                    while (enter.Key != ConsoleKey.Enter)
-                    {
-                         enter = Console.ReadKey();  
-                    }
-                }//
+               
                 if (_perso.Currentvie <= 0)
                 {
                    
@@ -76,12 +59,25 @@ namespace Rpg.Controllers
                 if (cki.Key == ConsoleKey.Escape)
                     break;
                 _cbView.GetInfoTouche(cki);
-                
+
+                ConsoleKeyInfo wait = Console.ReadKey();
+
+                if (_combatEnemi.Vie1 <= 0) //fin combat
+                {
+                    _isCombating = false;
+                    loot = RandLoot();
+                    pperso.GainItem(loot);
+                    pperso.Exp += 20;
+                    pperso.Lvup();
+
+                    InventaireControler.EndBattleDura(pperso);
+
+                    _cbView.EcranFin(loot);
+
+                    ConsoleKeyInfo enter = Console.ReadKey();
 
 
-                cki = Console.ReadKey();
-                while (cki.Key != ConsoleKey.Enter)
-                    cki = Console.ReadKey();
+                }//
             }
         }
 
