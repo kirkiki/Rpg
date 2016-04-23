@@ -51,6 +51,7 @@
     <Compile Include="Controllers\ItemControler.cs" />
     <Compile Include="Controllers\MaisonController.cs" />
     <Compile Include="Controllers\MapControler.cs" />
+    <Compile Include="Lib\ConsoleWrite.cs" />
     <Compile Include="Models\Arbre.cs" />
     <Compile Include="Models\Decor.cs" />
     <Compile Include="Models\Eau.cs" />

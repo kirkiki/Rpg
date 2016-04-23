@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Rpg.Controllers;
 using Rpg.Models;
+using Rpg.Lib;
 
 namespace Rpg.Views
 {
@@ -19,7 +20,8 @@ namespace Rpg.Views
         public void Display()
         {
             Console.Clear();
-            Console.WriteLine("Vous etes en combat avec un "+_cbControler.CombatEnemi.Nom1);
+            Console.Write("Vous etes en combat avec un ");
+            ConsoleWrite.ColorWriteLine(_cbControler.CombatEnemi.Nom1, "red");
             Console.WriteLine("Vie du "+ _cbControler.CombatEnemi.Nom1+": "+_cbControler.CombatEnemi.Vie1);
             Console.WriteLine("1:coup d'épée");
             Console.WriteLine("2:sort");
@@ -30,7 +32,8 @@ namespace Rpg.Views
         {
             Console.Clear();
             Console.WriteLine("vous avez vaincu cet Enemi!");
-            Console.WriteLine("vous avez gagné " + ploot); 
+            Console.Write("vous avez gagné " );
+            ConsoleWrite.ColorWriteLine(ploot, "red");
             Console.WriteLine("appuyez sur entrée");
         }
 
@@ -39,8 +42,9 @@ namespace Rpg.Views
             Console.Clear();
 
             Console.WriteLine("Vous avez lancé un coup d'épée");
-            Console.WriteLine("Vous infligez " + damage + " a " + _combatEnemi.Nom);
-            
+            Console.Write("Vous infligez " + damage + " a ");
+            ConsoleWrite.ColorWriteLine(_combatEnemi.Nom, "red");
+
             Console.WriteLine();
             
         }
@@ -56,8 +60,8 @@ namespace Rpg.Views
 
         public void attaqueEnnemi(int damage, Enemi _combatEnemi, Joueur _perso)
         {
-            Console.WriteLine(_combatEnemi.Nom + "vous attaque!");
-            Console.WriteLine("Il vous inflige " + damage + "degats, il vous reste" + _perso.Currentvie + "PV.");
+            Console.WriteLine(_combatEnemi.Nom + " vous attaque!");
+            Console.WriteLine("Il vous inflige " + damage + " degats, il vous reste " + _perso.Currentvie + " PV.");
 
         }
 
