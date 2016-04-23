@@ -100,7 +100,7 @@ namespace Rpg.Views
 
                 for (int i = 5 * page; i < Perso.Stuff.Count() && i < 5 * (page + 1); i++)
                 {
-                    Console.WriteLine(i - page*5 + 1 + ") " + Perso.Stuff[i].Nom + " = " + Perso.Stuff[i].Effet + " Durabilité " + Perso.Sac[i].Durabilite);
+                    Console.WriteLine(i - page*5 + 1 + ") " + Perso.Stuff[i].Nom + " = " + Perso.Stuff[i].Effet + " Durabilité " + Perso.Stuff[i].Durabilite);
                 }
             }
             else

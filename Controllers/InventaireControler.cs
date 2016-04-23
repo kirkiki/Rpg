@@ -56,36 +56,38 @@ namespace Rpg.Controllers
         {
             if (state == 2 && equipState == 1 && (page * 5 + input - 1) <= _perso.Sac.Count() && _perso.Sac.Count() > 0)
             {
-                _perso.Stuff.Add(_perso.Sac[page * 5 + input - 1]);
-                _perso.Sac.RemoveAt(page * 5 + input - 1);
+                _perso.Stuff.Add(_perso.Sac[page * 5 + input]);
+                ChangeStat(equipState, _perso, 0);
+                _perso.Sac.RemoveAt(page * 5 + input );
 
-                ChangeStat(equipState, page * 5 + input - 1, _perso);
+                
                 
 
             }
-            if (state == 2 && equipState == 2 && (page * 5 + input - 1) <= _perso.Stuff.Count() && _perso.Sac.Count() > 0)
+            if (state == 2 && equipState == 2 && (page * 5 + input) <= _perso.Stuff.Count() && _perso.Stuff.Count() > 0)
             {
-                _perso.Sac.Add(_perso.Stuff[page * 5 + input - 1]);
-                _perso.Stuff.RemoveAt(page * 5 + input - 1);
+                _perso.Sac.Add(_perso.Stuff[page * 5 + input]);
+                ChangeStat(equipState, _perso, 0);
+                _perso.Stuff.RemoveAt(page * 5 + input);
 
-                ChangeStat(equipState, page * 5 + input - 1, _perso);
+                
                 
             }
         }
 
-        public static void ChangeStat(int variable, int place, Joueur pperso)
+        public static void ChangeStat(int variable, Joueur pperso, int place)
         {
             if (variable == 1 )//equip
             {
-                pperso.Vie += pperso.Stuff[place].Bpv;
-                pperso.Attaque += pperso.Stuff[place].Battaque;
-                pperso.Defense += pperso.Stuff[place].Bdefense;
+                pperso.Vie += pperso.Stuff[pperso.Stuff.Count() - 1].Bpv;
+                pperso.Attaque += pperso.Stuff[pperso.Stuff.Count() - 1].Battaque;
+                pperso.Defense += pperso.Stuff[pperso.Stuff.Count() - 1].Bdefense;
             }
             else if (variable == 2 )//unequip
             {
-                pperso.Vie -= pperso.Sac[place].Bpv;
-                pperso.Attaque -= pperso.Sac[place].Battaque;
-                pperso.Defense -= pperso.Sac[place].Bdefense;
+                pperso.Vie -= pperso.Sac[pperso.Sac.Count() - 1].Bpv;
+                pperso.Attaque -= pperso.Sac[pperso.Sac.Count() - 1].Battaque;
+                pperso.Defense -= pperso.Sac[pperso.Sac.Count() - 1].Bdefense;
 
                 if (pperso.Currentvie > pperso.Vie)
                 {
@@ -116,7 +118,7 @@ namespace Rpg.Controllers
         {
             for (int i = 0; i < perso.Stuff.Count(); i++)
             {
-                ChangeStat(3, i, perso);
+                ChangeStat(3,perso, i);
             }   
         }
 
@@ -192,19 +194,19 @@ namespace Rpg.Controllers
                     }
                     break;
                 case ConsoleKey.D1:
-                    changeEquip(1);
+                    changeEquip(0);
                     break;
                 case ConsoleKey.D2:
-                    changeEquip(2);
+                    changeEquip(1);
                     break;
                 case ConsoleKey.D3:
-                    changeEquip(3);
+                    changeEquip(2);
                     break;
                 case ConsoleKey.D4:
-                    changeEquip(4);
+                    changeEquip(3);
                     break;
                 case ConsoleKey.D5:
-                    changeEquip(5);
+                    changeEquip(4);
                     break;
                 case ConsoleKey.R:
                     //test here

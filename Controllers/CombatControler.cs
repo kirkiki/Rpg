@@ -81,7 +81,7 @@ namespace Rpg.Controllers
             }
         }
 
-        public List<Enemi> Reset()
+        public List<Enemi> ResetEnnemi()
         {
             List<Enemi> reset = new List<Enemi>();
             reset.Add(new Loup());
@@ -90,11 +90,19 @@ namespace Rpg.Controllers
             return reset;
         }
 
+        public List<string> ResetItem()
+        {
+            List<string> reset = new List<string>();
+            reset.Add("Epee en bois");
+
+            return reset;
+        }
+
         public Enemi RandEnemis()
         {
             Random random = new Random((int)DateTime.Now.Ticks);
 
-            _enemi = Reset();
+            _enemi = ResetEnnemi();
 
             int var = random.Next(0, _enemi.Count());
             return _enemi[var];
@@ -102,7 +110,7 @@ namespace Rpg.Controllers
 
         public string RandLoot()
         {
-            _loot.Add("Epee en bois");
+            _loot = ResetItem();
             
             Random random = new Random((int)DateTime.Now.Ticks);
             int rand = random.Next(0, _loot.Count() - 1);
