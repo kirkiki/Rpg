@@ -12,7 +12,7 @@ namespace Rpg.Models
 
         
         protected bool equipable, consommable;
-        protected int bpv, battaque, bdefense; //bonus
+        
         protected int durabilite;
 
         
@@ -22,7 +22,7 @@ namespace Rpg.Models
 
         }
 
-        public Item(string pnom, string pdescription, string pdestroyDescription, string peffet, string pdestroyEffet, bool pequipable, bool pconsommable, int pbpv, int pbattaque, int pbdefense, int pdurabilité)
+        public Item(string pnom, string pdescription, string pdestroyDescription, string peffet, string pdestroyEffet, bool pequipable, bool pconsommable,  int pdurabilité)
         {
             this.nom = pnom;
             this.description = pdescription;
@@ -31,22 +31,52 @@ namespace Rpg.Models
             this.effet = peffet;
             this.equipable = pequipable;
             this.consommable = pconsommable;
-            this.bpv = pbpv;
-            this.battaque = pbattaque;
-            this.bdefense = pbdefense;
+            
             this.durabilite = pdurabilité;
 
         }
 
+        public void ActiveEffect(Joueur Perso)
+        {
+            switch (effet)
+            {
+                case "+1 Attaque":
+                    Perso.Attaque ++;
+                    break;
+                case "+1 Defense":
+                    Perso.Defense++;
+                    break;
+                case "Webbed":
+                    Perso.GotWebbed = true;
+                    break;
+                 default:
+                    break;
+            }
+        }
+
+        public void UnEffect(Joueur Perso)
+        {
+            switch (effet)
+            {
+                case "+1 Attaque":
+                    Perso.Attaque--;
+                    break;
+                case "+1 Defense":
+                    Perso.Defense--;
+                    break;
+                case "Webbed":
+                    Perso.GotWebbed = false;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         public void DuraDown()
         {
             durabilite--;
             if (durabilite <= 0)
             {
-                bpv = 0;
-                battaque = 0;
-                bdefense = 0;
 
                 effet = destroyEffet;
                 description = destroyDescription;
@@ -71,23 +101,7 @@ namespace Rpg.Models
             set { durabilite = value; }
         }
         
-        public int Bdefense
-        {
-            get { return bdefense; }
-            set { bdefense = value; }
-        }
-
-        public int Battaque
-        {
-            get { return battaque; }
-            set { battaque = value; }
-        }
-
-        public int Bpv
-        {
-            get { return bpv; }
-            set { bpv = value; }
-        }
+        
 
        public bool Consommable
        {

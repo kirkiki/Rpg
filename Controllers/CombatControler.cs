@@ -66,7 +66,11 @@ namespace Rpg.Controllers
                 {
                     _isCombating = false;
                     loot = RandLoot();
-                    pperso.GainItem(loot);
+
+                    if (loot != "Rien")
+                    {
+                        pperso.GainItem(loot); 
+                    }
                     pperso.Exp += 20;
                     pperso.Lvup();
 
@@ -94,6 +98,15 @@ namespace Rpg.Controllers
         {
             List<string> reset = new List<string>();
             reset.Add("Epee en bois");
+            reset.Add("Epee en bois");
+            reset.Add("Armure en cuir");
+            reset.Add("Armure en cuir");
+            reset.Add("Palmes");
+            reset.Add("Rien");
+            reset.Add("Rien");
+            reset.Add("Rien");
+            reset.Add("Rien");
+
 
             return reset;
         }
@@ -113,7 +126,7 @@ namespace Rpg.Controllers
             _loot = ResetItem();
             
             Random random = new Random((int)DateTime.Now.Ticks);
-            int rand = random.Next(0, _loot.Count() - 1);
+            int rand = random.Next(0, _loot.Count());
           
             
             return _loot[rand];

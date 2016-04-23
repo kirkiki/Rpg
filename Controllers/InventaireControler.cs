@@ -57,17 +57,14 @@ namespace Rpg.Controllers
             if (state == 2 && equipState == 1 && (page * 5 + input - 1) <= _perso.Sac.Count() && _perso.Sac.Count() > 0)
             {
                 _perso.Stuff.Add(_perso.Sac[page * 5 + input]);
-                ChangeStat(equipState, _perso, 0);
+                _perso.Stuff[_perso.Stuff.Count() - 1].ActiveEffect(_perso);
                 _perso.Sac.RemoveAt(page * 5 + input );
-
-                
-                
 
             }
             if (state == 2 && equipState == 2 && (page * 5 + input) <= _perso.Stuff.Count() && _perso.Stuff.Count() > 0)
             {
                 _perso.Sac.Add(_perso.Stuff[page * 5 + input]);
-                ChangeStat(equipState, _perso, 0);
+                _perso.Stuff[_perso.Stuff.Count() - 1].UnEffect(_perso);
                 _perso.Stuff.RemoveAt(page * 5 + input);
 
                 
@@ -75,50 +72,15 @@ namespace Rpg.Controllers
             }
         }
 
-        public static void ChangeStat(int variable, Joueur pperso, int place)
-        {
-            if (variable == 1 )//equip
-            {
-                pperso.Vie += pperso.Stuff[pperso.Stuff.Count() - 1].Bpv;
-                pperso.Attaque += pperso.Stuff[pperso.Stuff.Count() - 1].Battaque;
-                pperso.Defense += pperso.Stuff[pperso.Stuff.Count() - 1].Bdefense;
-            }
-            else if (variable == 2 )//unequip
-            {
-                pperso.Vie -= pperso.Sac[pperso.Sac.Count() - 1].Bpv;
-                pperso.Attaque -= pperso.Sac[pperso.Sac.Count() - 1].Battaque;
-                pperso.Defense -= pperso.Sac[pperso.Sac.Count() - 1].Bdefense;
-
-                if (pperso.Currentvie > pperso.Vie)
-                {
-                    pperso.Currentvie = pperso.Vie;
-                }
-
-            }
-            else if(variable == 3){//both
-
-                pperso.Vie -= pperso.Stuff[place].Bpv;
-                pperso.Attaque -= pperso.Stuff[place].Battaque;
-                pperso.Defense -= pperso.Stuff[place].Bdefense;
-
-                pperso.Stuff[place].DuraDown();
-
-                pperso.Vie += pperso.Stuff[place].Bpv;
-                pperso.Attaque += pperso.Stuff[place].Battaque;
-                pperso.Defense += pperso.Stuff[place].Bdefense;
-
-                if (pperso.Currentvie > pperso.Vie)
-                {
-                    pperso.Currentvie = pperso.Vie;
-                }
-            }
-        }
+        
 
         static public void EndBattleDura(Joueur perso)
         {
             for (int i = 0; i < perso.Stuff.Count(); i++)
             {
-                ChangeStat(3,perso, i);
+                perso.Stuff[i].UnEffect(perso);
+                perso.Stuff[i].DuraDown();
+                perso.Stuff[i].ActiveEffect(perso);
             }   
         }
 
