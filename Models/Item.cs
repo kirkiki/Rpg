@@ -36,7 +36,6 @@ namespace Rpg.Models
             this.bdefense = pbdefense;
             this.durabilite = pdurabilité;
 
-            
         }
 
 

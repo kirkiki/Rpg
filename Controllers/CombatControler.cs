@@ -17,9 +17,7 @@ namespace Rpg.Controllers
         private bool _isCombating = false;
         private Enemi _combatEnemi;
         private Joueur _perso;
-        private Enemi[] _enemi = new Enemi[] { new Singe(), new Loup(), };
-
-
+        private List<Enemi> _enemi = new List<Enemi>();
         private List<string> _loot = new List<string>();
 
         public CombatControler(MapControler pMapControler)
@@ -40,6 +38,8 @@ namespace Rpg.Controllers
             _combatEnemi = pEnemi;
             _perso = pperso;
             _isCombating = true;
+
+
             while (_isCombating == true)
             {
                
@@ -81,10 +81,22 @@ namespace Rpg.Controllers
             }
         }
 
+        public List<Enemi> Reset()
+        {
+            List<Enemi> reset = new List<Enemi>();
+            reset.Add(new Loup());
+            reset.Add(new Singe());
+
+            return reset;
+        }
+
         public Enemi RandEnemis()
         {
             Random random = new Random((int)DateTime.Now.Ticks);
-            int var = random.Next(0, _enemi.Length);
+
+            _enemi = Reset();
+
+            int var = random.Next(0, _enemi.Count());
             return _enemi[var];
         }
 

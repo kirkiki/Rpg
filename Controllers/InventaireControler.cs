@@ -54,10 +54,8 @@ namespace Rpg.Controllers
 
         public void changeEquip(int input)
         {
-            if (equipState == 1)
+            if (state == 2 && equipState == 1 && (page * 5 + input - 1) <= _perso.Sac.Count() && _perso.Sac.Count() > 0)
             {
-                
-
                 _perso.Stuff.Add(_perso.Sac[page * 5 + input - 1]);
                 _perso.Sac.RemoveAt(page * 5 + input - 1);
 
@@ -65,7 +63,7 @@ namespace Rpg.Controllers
                 
 
             }
-            if (equipState == 2)
+            if (state == 2 && equipState == 2 && (page * 5 + input - 1) <= _perso.Stuff.Count() && _perso.Sac.Count() > 0)
             {
                 _perso.Sac.Add(_perso.Stuff[page * 5 + input - 1]);
                 _perso.Stuff.RemoveAt(page * 5 + input - 1);

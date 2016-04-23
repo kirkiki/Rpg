@@ -22,5 +22,21 @@ namespace Rpg.Lib
             }
             Console.ResetColor();
         }
+
+        static public void ColorWrite(String text, string color)
+        {
+            switch (color)
+            {
+                case "red":
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(text);
+
+                    break;
+                default:
+                    Console.Write(text);
+                    break;
+            }
+            Console.ResetColor();
+        }
     }
 }

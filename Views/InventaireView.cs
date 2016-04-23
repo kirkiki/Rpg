@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Rpg.Controllers;
 using Rpg.Models;
+using Rpg.Lib;
 
 namespace Rpg.Views
 {
@@ -70,29 +71,41 @@ namespace Rpg.Views
             Console.WriteLine("-------- Equipement -------");
             Console.WriteLine("--- I : Menu --- O : Objectif ---");
             Console.WriteLine("");
-            Console.WriteLine("--- S : Equiper --- D : Déequiper ---");
+            
             
             
             if (trigger == 1)
             {
+                Console.Write("--- S : ");
+                ConsoleWrite.ColorWrite("Equiper", "red");
+                Console.WriteLine(" --- D : Désequiper ---");
+                Console.WriteLine();
                 Console.WriteLine("--- <-- Changer Page --> ---");
                 Console.WriteLine("--- <-- Page " + page + "--> ---");
 
                 for (int i = 5 * page; i < Perso.Sac.Count() && i < 5 * (page +1 ); i++)
                 {
-                    Console.WriteLine(i + 1 + ") " + Perso.Sac[i].Nom + " = " + Perso.Sac[i].Effet + " Durabilité " + Perso.Sac[i].Durabilite);
+                    Console.WriteLine(i - 5*page + 1 + ") " + Perso.Sac[i].Nom + " = " + Perso.Sac[i].Effet + " Durabilité " + Perso.Sac[i].Durabilite);
                 }
 
             }
-            if (trigger == 2)
+            else if (trigger == 2)
             {
+                Console.Write("--- S : Equiper --- D :");
+                ConsoleWrite.ColorWrite(" Désequiper", "red");
+                Console.WriteLine(" ---");
+                Console.WriteLine();
                 Console.WriteLine("--- <-- Changer Page --> ---");
                 Console.WriteLine("---    " + page + "    ---");
 
                 for (int i = 5 * page; i < Perso.Stuff.Count() && i < 5 * (page + 1); i++)
                 {
-                    Console.WriteLine(i + 1 + ") " + Perso.Stuff[i].Nom + " = " + Perso.Stuff[i].Effet + " Durabilité " + Perso.Sac[i].Durabilite);
+                    Console.WriteLine(i - page*5 + 1 + ") " + Perso.Stuff[i].Nom + " = " + Perso.Stuff[i].Effet + " Durabilité " + Perso.Sac[i].Durabilite);
                 }
+            }
+            else
+            {
+                Console.WriteLine("--- S : Equiper --- D : Désequiper ---");
             }
 
         }
