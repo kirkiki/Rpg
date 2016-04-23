@@ -13,6 +13,7 @@ namespace Rpg.Controllers
         private CombatControler _cbc;
         private InventaireControler _ivc;
         private HomeControler _hoc;
+        private ParlerControler _pac;
 
         public MapControler(HomeControler phoc)
         {
@@ -20,6 +21,7 @@ namespace Rpg.Controllers
             _msc = new MaisonController(this);
             _cbc = new CombatControler(this);
             _ivc = new InventaireControler(this);
+            _pac = new ParlerControler(this);
             _hoc = phoc;
 
         }
@@ -89,7 +91,7 @@ namespace Rpg.Controllers
         {
             if (CanTalk())
             {
-                //Map.Joueur.CanSwim = true;
+                _pac.ParlerVieux(Map.Joueur);
                 Pnj.SwimmingAbility(Map.Joueur);
             }
         }

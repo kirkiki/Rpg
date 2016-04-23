@@ -51,6 +51,7 @@
     <Compile Include="Controllers\ItemControler.cs" />
     <Compile Include="Controllers\MaisonController.cs" />
     <Compile Include="Controllers\MapControler.cs" />
+    <Compile Include="Controllers\ParlerControler.cs" />
     <Compile Include="Lib\ConsoleWrite.cs" />
     <Compile Include="Models\Arbre.cs" />
     <Compile Include="Models\Decor.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Views\InventaireView.cs" />
     <Compile Include="Views\MaisonView.cs" />
     <Compile Include="Views\MapView.cs" />
+    <Compile Include="Views\ParlerView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
